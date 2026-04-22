@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout showFooter={false}>
+  <main class="relative container mx-auto px-4 md:px-6 py-20 md:py-28 min-h-[70vh]
+               flex flex-col items-center justify-center text-center">
+    <p class="font-mono uppercase text-lg tracking-[0.22em] text-primary-500 flex items-center justify-center gap-2">
+      Error · 404
+    </p>
+
+    <h1 class="mt-6 font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] text-primary-900 max-w-[14ch]">
+      Page not found.
+    </h1>
+
+    <p class="mt-8 text-primary-700 max-w-xl text-xl leading-relaxed">
+      The page you requested doesn't exist. It may have moved,
+      been archived, or never existed at this address.
+    </p>
+  </main>
+</Layout>

@@ -1,0 +1,171 @@
+---
+const socials = [
+	{
+		name: "GitHub",
+		url: "https://github.com/ravelikementalstate",
+		handle: "@ravelikementalstate",
+	},
+	{
+		name: "LinkedIn",
+		url: "https://linkedin.com/",
+		handle: "@tristan.h",
+	},
+];
+
+const email = "hello@example.com";
+const year = new Date().getFullYear();
+const location = "Hattingen, DE";
+---
+
+<footer class="relative print:hidden">
+	<!-- "Cut here" divider -->
+	<div class="container mx-auto px-4 md:px-6" aria-hidden="true">
+		<div class="flex items-center gap-4 text-primary-400">
+			<span
+				class="font-mono uppercase text-[10px] tracking-[0.22em] text-primary-500 whitespace-nowrap">
+				End of transmission
+			</span>
+			<div class="flex-1 border-t border-dashed border-primary-300"></div>
+			<span class="font-serif italic text-sm text-primary-600">— T</span>
+		</div>
+	</div>
+
+	<!-- Sign-off -->
+	<div class="container mx-auto px-4 md:px-6 pt-14 pb-14 md:pt-24 md:pb-20">
+		<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10">
+			<div class="lg:col-span-8">
+				<h2
+					class="font-serif text-2xl md:text-4xl lg:text-5xl leading-[1.05] text-primary-900 max-w-[40ch]">
+					<span class="text-4xl md:text-6xl lg:text-7xl"
+						>Interested?</span
+					>
+					<br />
+					Feel free to check out
+					<span class="highlight italic">Email</span> or
+					<a href="/resume" class="highlight italic">résumé</a>
+					for more information.
+				</h2>
+
+				<p
+					class="mt-8 text-primary-700 max-w-xl text-lg leading-relaxed">
+					Whether it's a project to ship, a question to mull over, or
+					just a good book to trade - drop a line. Replies are usually
+					prompt, occasionally verbose.
+				</p>
+			</div>
+
+			<aside
+				class="lg:col-span-4 lg:border-l lg:border-primary-200/80 lg:pl-10">
+				<ul
+					class="divide-y divide-primary-200/60 border-y border-primary-200/60">
+					{
+						socials.map(({ name, url, handle }) => (
+							<li>
+								<a
+									href={url}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="group flex items-baseline justify-between gap-4 py-4
+                         transition-colors hover:text-primary-950">
+									<span class="font-serif text-xl text-primary-900 transition-transform duration-300 group-hover:translate-x-1">
+										{name}
+									</span>
+									<span class="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-primary-500 transition-colors group-hover:text-accent">
+										<span>{handle ?? "Visit"}</span>
+										<span
+											aria-hidden="true"
+											class="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+											↗
+										</span>
+									</span>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+
+				<p
+					class="mt-6 font-serif italic text-sm text-primary-600 leading-relaxed">
+					Prefer carrier pigeon? The address is on the envelope.
+				</p>
+			</aside>
+		</div>
+	</div>
+
+	<!-- Colophon -->
+	<div class="border-t border-primary-200/70 bg-primary-100/40">
+		<div
+			class="container mx-auto px-4 md:px-6 py-5
+             flex flex-col md:flex-row md:items-center md:justify-between gap-3
+             font-mono uppercase text-[10px] tracking-[0.22em] text-primary-500">
+			<p class="flex items-center gap-2">
+				<span>© {year} — Tristan</span>
+				<span class="text-primary-300">/</span>
+				<span>{location}</span>
+			</p>
+			<button
+				type="button"
+				data-top-btn
+				class="self-start md:self-auto inline-flex items-center gap-2 text-primary-500
+               hover:text-primary-900 transition-colors
+               focus-visible:outline-none focus-visible:text-primary-900">
+				<span>Return to top</span>
+				<span aria-hidden="true">↑</span>
+			</button>
+		</div>
+	</div>
+</footer>
+
+<script is:inline>
+	(function () {
+		function initMail() {
+			const btn = document.querySelector("[data-mail-btn]");
+			if (!btn || btn.__bound) return;
+			btn.__bound = true;
+			btn.addEventListener("click", async () => {
+				const email = btn.dataset.mail;
+				if (!email) return;
+				try {
+					await navigator.clipboard.writeText(email);
+				} catch (_) {
+					/* noop */
+				}
+				const copyText = btn.querySelector("[data-mail-copy-text]");
+				if (!copyText) return;
+				const prev = copyText.textContent;
+				copyText.textContent = "Copied";
+				btn.setAttribute("data-copied", "true");
+				clearTimeout(btn.__t);
+				btn.__t = setTimeout(() => {
+					copyText.textContent = prev || "Copy";
+					btn.removeAttribute("data-copied");
+				}, 1400);
+			});
+		}
+
+		function initTop() {
+			const btn = document.querySelector("[data-top-btn]");
+			if (!btn || btn.__bound) return;
+			btn.__bound = true;
+			btn.addEventListener("click", () => {
+				const prefersReduced = window.matchMedia(
+					"(prefers-reduced-motion: reduce)",
+				).matches;
+				window.scrollTo({
+					top: 0,
+					behavior: prefersReduced ? "auto" : "smooth",
+				});
+			});
+		}
+
+		function boot() {
+			initMail();
+			initTop();
+		}
+
+		document.addEventListener("astro:page-load", boot);
+		if (document.readyState === "loading")
+			document.addEventListener("DOMContentLoaded", boot);
+		else boot();
+	})();
+</script>
