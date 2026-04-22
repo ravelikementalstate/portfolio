@@ -1,245 +1,281 @@
 ---
 const links = [
-  { url: '/', name: 'Index', hideOnMobile: true },
-  { url: '/work', name: 'Work' },
-  { url: '/resume', name: 'Résumé' },
-  { url: '/contact', name: 'Contact' },
+	{ url: "/", name: "Index", hideOnMobile: true },
+	{ url: "/work", name: "Work" },
+	{ url: "/resume", name: "Résumé" },
+	{ url: "/contact", name: "Contact" },
 ];
 
-const monogram = 'T';
-const postmark = { location: 'Hattingen, DE', year: new Date().getFullYear() };
+const monogram = "T";
 
 function normalize(path: string) {
-  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-  const stripped = base && path.startsWith(base) ? path.slice(base.length) : path;
-  return '/' + stripped.replace(/^\/|\/$/g, '');
+	const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+	const stripped =
+		base && path.startsWith(base) ? path.slice(base.length) : path;
+	return "/" + stripped.replace(/^\/|\/$/g, "");
 }
 
 function isActive(href: string) {
-  const here = normalize(new URL(Astro.url).pathname);
-  const target = normalize(href);
-  if (target === '/') return here === '/';
-  return here === target || here.startsWith(target + '/');
+	const here = normalize(new URL(Astro.url).pathname);
+	const target = normalize(href);
+	if (target === "/") return here === "/";
+	return here === target || here.startsWith(target + "/");
 }
 ---
 
 <nav
-  class="relative z-50 print:hidden mx-auto container px-4 md:px-6
+	class="relative z-50 print:hidden mx-auto container px-4 md:px-6
          grid grid-cols-[1fr_auto_1fr] items-center gap-4
          border-b border-primary-200/70"
-  style="height: var(--navbar-height)"
->
-  <!-- Seal / Monogram -->
-  <a
-    href="/"
-    aria-label="Home"
-    class="group relative justify-self-start shrink-0 inline-flex items-center gap-3 focus-visible:outline-none"
-  >
-    <span
-      class="relative grid place-items-center size-11 rounded-full
+	style="height: var(--navbar-height)">
+	<!-- Seal / Monogram -->
+	<a
+		href="/"
+		aria-label="Home"
+		class="group relative justify-self-start shrink-0 inline-flex items-center gap-3 focus-visible:outline-none">
+		<span
+			class="relative grid place-items-center size-11 rounded-full
              bg-primary-900 text-primary-50
              shadow-[inset_0_0_0_1px_var(--color-primary-800),0_1px_0_0_var(--color-primary-300)]
              rotate-[-4deg] transition-transform duration-500
-             group-hover:rotate-6"
-    >
-      <span class="font-serif text-[1.35rem] leading-none pt-0.5 -translate-y-px italic">
-        {monogram}
-      </span>
-      <span
-        class="absolute inset-0 rounded-full border border-dashed border-primary-400/60
+             group-hover:rotate-6">
+			<span
+				class="font-serif text-[1.35rem] leading-none pt-0.5 -translate-y-px italic">
+				{monogram}
+			</span>
+			<span
+				class="absolute inset-0 rounded-full border border-dashed border-primary-400/60
                scale-[1.18] opacity-60 pointer-events-none"
-        aria-hidden="true"
-      ></span>
-    </span>
-    <span class="hidden sm:flex flex-col leading-none">
-      <span class="font-serif text-[0.95rem] tracking-tight text-primary-900">
-        tristan.h
-      </span>
-      <span class="font-mono uppercase text-[10px] tracking-[0.18em] text-primary-500 mt-0.5">
-        Creative Technologist
-      </span>
-    </span>
-  </a>
+				aria-hidden="true"></span>
+		</span>
+		<span class="hidden sm:flex flex-col leading-none">
+			<span
+				class="font-serif text-[0.95rem] tracking-tight text-primary-900">
+				tristan.h
+			</span>
+			<span
+				class="font-mono uppercase text-[10px] tracking-[0.18em] text-primary-500 mt-0.5">
+				Creative Technologist
+			</span>
+		</span>
+	</a>
 
-  <!-- Pill nav -->
-  <div
-    class="relative justify-self-center max-w-full overflow-x-auto no-scrollbar"
-    data-nav-container
-  >
-    <div
-      id="nav-indicator"
-      class="absolute left-0 top-0 z-0 rounded-full bg-primary-900
+	<!-- Pill nav -->
+	<div
+		class="relative justify-self-center max-w-full overflow-x-auto no-scrollbar"
+		data-nav-container>
+		<div
+			id="nav-indicator"
+			class="absolute left-0 top-0 z-0 rounded-full bg-primary-900
              transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
              opacity-0 pointer-events-none"
-      transition:persist
-    ></div>
-    <ul class="relative flex items-center justify-center gap-1 px-2">
-      {
-        links.map(({ url, name, hideOnMobile }) => {
-          const active = isActive(url);
-          return (
-            <li class={hideOnMobile ? 'hidden md:block' : ''}>
-              <a
-                href={url}
-                data-nav-link
-                data-active={active ? 'true' : 'false'}
-                class:list={[
-                  'relative z-10 block whitespace-nowrap rounded-full',
-                  'px-4 md:px-5 py-2.5 text-[0.92rem]',
-                  'transition-colors duration-300',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70',
-                  active
-                    ? 'text-primary-50'
-                    : 'text-primary-800 hover:text-primary-950',
-                ]}
-              >
-                {name}
-              </a>
-            </li>
-          );
-        })
-      }
-    </ul>
-  </div>
+			transition:persist>
+		</div>
+		<ul class="relative flex items-center justify-center gap-1 px-2">
+			{
+				links.map(({ url, name, hideOnMobile }) => {
+					const active = isActive(url);
+					return (
+						<li class={hideOnMobile ? "hidden md:block" : ""}>
+							<a
+								href={url}
+								data-nav-link
+								data-active={active ? "true" : "false"}
+								class:list={[
+									"relative z-10 block whitespace-nowrap rounded-full",
+									"px-4 md:px-5 py-2.5 text-[0.92rem]",
+									"transition-colors duration-300",
+									"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70",
+									active
+										? "text-accent"
+										: "text-primary-800 hover:text-primary-50",
+								]}>
+								{name}
+							</a>
+						</li>
+					);
+				})
+			}
+		</ul>
+	</div>
 
-  <!-- Postmark + theme toggle -->
-  <div class="justify-self-end shrink-0 flex items-center gap-3">
-    <div
-      class="hidden lg:flex flex-col items-end leading-none
+	<!-- Postmark + theme toggle -->
+	<div class="justify-self-end shrink-0 flex items-center gap-3">
+		<div
+			class="hidden lg:flex flex-col items-end leading-none
              font-mono uppercase text-[10px] tracking-[0.2em] text-primary-500"
-      aria-hidden="true"
-    >
+			aria-hidden="true">
+		</div>
 
-    </div>
-
-    <button
-      type="button"
-      data-theme-toggle
-      aria-label="Toggle color theme"
-      class="relative grid place-items-center size-10 rounded-full
+		<button
+			type="button"
+			data-theme-toggle
+			aria-label="Toggle color theme"
+			class="relative grid place-items-center size-10 rounded-full
              bg-primary-100 text-primary-800 border border-primary-200
              hover:bg-primary-200/70 active:scale-95
              transition-all duration-300
-             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70"
-    >
-      <svg
-        class="size-4.5 transition-transform duration-500"
-        data-theme-icon
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1.75"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden="true"
-      >
-        <!-- Sun (light mode) -->
-        <g data-sun>
-          <circle cx="12" cy="12" r="4.25"></circle>
-          <path d="M12 3v1.8M12 19.2V21M3 12h1.8M19.2 12H21M5.3 5.3l1.3 1.3M17.4 17.4l1.3 1.3M5.3 18.7l1.3-1.3M17.4 6.6l1.3-1.3"></path>
-        </g>
-        <!-- Moon (dark mode) -->
-        <path data-moon d="M20 14.5A8 8 0 0 1 9.5 4a0.5 0.5 0 0 0-.7-.5A9 9 0 1 0 20.5 15.2a0.5 0.5 0 0 0-.5-.7Z" class="hidden"></path>
-      </svg>
-    </button>
-  </div>
+             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70">
+			<svg
+				class="size-4.5 transition-transform duration-500"
+				data-theme-icon
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="1.75"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				aria-hidden="true">
+				<!-- Sun (light mode) -->
+				<g data-sun>
+					<circle cx="12" cy="12" r="4.25"></circle>
+					<path
+						d="M12 3v1.8M12 19.2V21M3 12h1.8M19.2 12H21M5.3 5.3l1.3 1.3M17.4 17.4l1.3 1.3M5.3 18.7l1.3-1.3M17.4 6.6l1.3-1.3"
+					></path>
+				</g>
+				<!-- Moon (dark mode) -->
+				<path
+					data-moon
+					d="M20 14.5A8 8 0 0 1 9.5 4a0.5 0.5 0 0 0-.7-.5A9 9 0 1 0 20.5 15.2a0.5 0.5 0 0 0-.5-.7Z"
+					class="hidden"></path>
+			</svg>
+		</button>
+	</div>
 </nav>
 
 <script is:inline>
-  (function () {
-    function updateIndicator(container, indicator, el, animate) {
-      if (!indicator || !el) return;
-      if (!animate) indicator.style.transition = 'none';
-      indicator.style.width = el.offsetWidth + 'px';
-      indicator.style.height = el.offsetHeight + 'px';
-      indicator.style.transform = 'translate(' + el.offsetLeft + 'px,' + el.offsetTop + 'px)';
-      indicator.style.opacity = '1';
-      if (!animate) {
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => (indicator.style.transition = ''));
-        });
-      }
-    }
+	(function () {
+		function updateIndicator(container, indicator, el, animate) {
+			if (!indicator || !el) return;
+			if (!animate) indicator.style.transition = "none";
+			indicator.style.width = el.offsetWidth + "px";
+			indicator.style.height = el.offsetHeight + "px";
+			indicator.style.transform =
+				"translate(" + el.offsetLeft + "px," + el.offsetTop + "px)";
+			indicator.style.opacity = "1";
+			if (!animate) {
+				requestAnimationFrame(() => {
+					requestAnimationFrame(
+						() => (indicator.style.transition = ""),
+					);
+				});
+			}
+		}
 
-    function initNav() {
-      const container = document.querySelector('[data-nav-container]');
-      if (!container) return;
-      const indicator = container.querySelector('#nav-indicator');
-      const active = container.querySelector('[data-nav-link][data-active="true"]');
-      const first = !window.__navInit;
+		function initNav() {
+			const container = document.querySelector("[data-nav-container]");
+			if (!container) return;
+			const indicator = container.querySelector("#nav-indicator");
+			const active = container.querySelector(
+				'[data-nav-link][data-active="true"]',
+			);
+			const first = !window.__navInit;
 
-      if (active) updateIndicator(container, indicator, active, !first);
-      else if (indicator) indicator.style.opacity = '0';
+			if (active) updateIndicator(container, indicator, active, !first);
+			else if (indicator) indicator.style.opacity = "0";
 
-      window.__navInit = true;
+			window.__navInit = true;
 
-      container.querySelectorAll('[data-nav-link]').forEach((link) => {
-        link.addEventListener('mouseenter', () => updateIndicator(container, indicator, link, true));
-        link.addEventListener('focus', () => updateIndicator(container, indicator, link, true));
-      });
-      container.addEventListener('mouseleave', () => {
-        const current = container.querySelector('[data-nav-link][data-active="true"]');
-        if (current) updateIndicator(container, indicator, current, true);
-        else if (indicator) indicator.style.opacity = '0';
-      });
-    }
+			container.querySelectorAll("[data-nav-link]").forEach((link) => {
+				link.addEventListener("mouseenter", () =>
+					updateIndicator(container, indicator, link, true),
+				);
+				link.addEventListener("focus", () =>
+					updateIndicator(container, indicator, link, true),
+				);
+			});
+			container.addEventListener("mouseleave", () => {
+				const current = container.querySelector(
+					'[data-nav-link][data-active="true"]',
+				);
+				if (current)
+					updateIndicator(container, indicator, current, true);
+				else if (indicator) indicator.style.opacity = "0";
+			});
+		}
 
-    function initTheme() {
-      const btn = document.querySelector('[data-theme-toggle]');
-      if (!btn) return;
-      const icon = btn.querySelector('[data-theme-icon]');
-      const sun = icon && icon.querySelector('[data-sun]');
-      const moon = icon && icon.querySelector('[data-moon]');
-      const dot = btn.querySelector('[data-theme-dot]');
+		function initTheme() {
+			const btn = document.querySelector("[data-theme-toggle]");
+			if (!btn) return;
+			const icon = btn.querySelector("[data-theme-icon]");
+			const sun = icon && icon.querySelector("[data-sun]");
+			const moon = icon && icon.querySelector("[data-moon]");
+			const dot = btn.querySelector("[data-theme-dot]");
 
-      function render(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        if (sun && moon) {
-          sun.classList.toggle('hidden', theme === 'dark');
-          moon.classList.toggle('hidden', theme !== 'dark');
-        }
-        if (icon) icon.setAttribute('data-theme', theme);
-        if (dot) dot.setAttribute('data-visible', localStorage.getItem('theme') ? 'true' : 'false');
-      }
+			function render(theme) {
+				document.documentElement.setAttribute("data-theme", theme);
+				if (sun && moon) {
+					sun.classList.toggle("hidden", theme === "dark");
+					moon.classList.toggle("hidden", theme !== "dark");
+				}
+				if (icon) icon.setAttribute("data-theme", theme);
+				if (dot)
+					dot.setAttribute(
+						"data-visible",
+						localStorage.getItem("theme") ? "true" : "false",
+					);
+			}
 
-      render(document.documentElement.getAttribute('data-theme') || 'light');
+			render(
+				document.documentElement.getAttribute("data-theme") || "light",
+			);
 
-      if (!btn.__bound) {
-        btn.__bound = true;
-        btn.addEventListener('click', () => {
-          const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-          localStorage.setItem('theme', next);
-          render(next);
-          // Nudge the indicator in case colors affected layout metrics
-          const container = document.querySelector('[data-nav-container]');
-          const indicator = container && container.querySelector('#nav-indicator');
-          const active = container && container.querySelector('[data-nav-link][data-active="true"]');
-          if (container && indicator && active) updateIndicator(container, indicator, active, true);
-        });
-      }
-    }
+			if (!btn.__bound) {
+				btn.__bound = true;
+				btn.addEventListener("click", () => {
+					const next =
+						document.documentElement.getAttribute("data-theme") ===
+						"dark"
+							? "light"
+							: "dark";
+					localStorage.setItem("theme", next);
+					render(next);
+					// Nudge the indicator in case colors affected layout metrics
+					const container = document.querySelector(
+						"[data-nav-container]",
+					);
+					const indicator =
+						container && container.querySelector("#nav-indicator");
+					const active =
+						container &&
+						container.querySelector(
+							'[data-nav-link][data-active="true"]',
+						);
+					if (container && indicator && active)
+						updateIndicator(container, indicator, active, true);
+				});
+			}
+		}
 
-    function boot() {
-      initNav();
-      initTheme();
-    }
+		function boot() {
+			initNav();
+			initTheme();
+		}
 
-    document.addEventListener('astro:page-load', boot);
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', boot);
-    } else {
-      boot();
-    }
+		document.addEventListener("astro:page-load", boot);
+		if (document.readyState === "loading") {
+			document.addEventListener("DOMContentLoaded", boot);
+		} else {
+			boot();
+		}
 
-    let resizeRaf;
-    window.addEventListener('resize', () => {
-      cancelAnimationFrame(resizeRaf);
-      resizeRaf = requestAnimationFrame(() => {
-        const container = document.querySelector('[data-nav-container]');
-        const indicator = container && container.querySelector('#nav-indicator');
-        const active = container && container.querySelector('[data-nav-link][data-active="true"]');
-        if (container && indicator && active) updateIndicator(container, indicator, active, false);
-      });
-    });
-  })();
+		let resizeRaf;
+		window.addEventListener("resize", () => {
+			cancelAnimationFrame(resizeRaf);
+			resizeRaf = requestAnimationFrame(() => {
+				const container = document.querySelector(
+					"[data-nav-container]",
+				);
+				const indicator =
+					container && container.querySelector("#nav-indicator");
+				const active =
+					container &&
+					container.querySelector(
+						'[data-nav-link][data-active="true"]',
+					);
+				if (container && indicator && active)
+					updateIndicator(container, indicator, active, false);
+			});
+		});
+	})();
 </script>

@@ -112,7 +112,7 @@
   }
 
   body {
-    /* background-image: url('/highlight-texture.webp'); */
+    background-image: url('/nature-paper.webp');
     background-size: 560px;
     background-repeat: repeat;
     background-blend-mode: multiply;
@@ -130,7 +130,7 @@
   .highlight::after {
     @apply absolute bottom-1 left-0 block w-full md:h-2 h-0.5 opacity-60 bg-accent transition-all rounded-sm -z-10;
     content: '';
-    /* background-image: url('/highlight-texture.webp'); */
+    background-image: url('/highlight-texture.webp');
     background-size: 400px;
     background-repeat: repeat;
     animation: resize 3s infinite;

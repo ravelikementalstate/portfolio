@@ -1,7 +1,128 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import Layout from "../layouts/Layout.astro";
+
+const experience = [
+  {
+    period: "2024 — Present",
+    role: "Independent designer & engineer",
+    org: "Own practice",
+    notes: "Brand, product, and writing for a short list of collaborators.",
+  },
+  {
+    period: "2022 — 2024",
+    role: "Senior designer",
+    org: "Studio Kind, Rotterdam",
+    notes: "Led design on product and brand work for cultural institutions.",
+  },
+  {
+    period: "2019 — 2022",
+    role: "Interaction designer",
+    org: "Werkplaats, Eindhoven",
+    notes: "Shipped interfaces for research tools and civic services.",
+  },
+];
+
+const education = [
+  {
+    period: "2015 — 2019",
+    role: "BA Graphic Design",
+    org: "Design Academy Eindhoven",
+    notes: "Thesis on typographic systems in civic signage.",
+  },
+];
+
+const skills = {
+  Design: ["Brand systems", "Editorial", "Typography", "Motion", "Illustration"],
+  Engineering: ["TypeScript", "React", "Astro", "Node", "Svelte"],
+  Tools: ["Figma", "Framer", "Glyphs", "Blender", "Linear"],
+};
 ---
 
 <Layout>
-    yoooo
+  <section class="container mx-auto px-4 md:px-6 py-16 md:py-24">
+    <div class="flex flex-wrap items-start justify-between gap-6">
+      <div>
+        <p class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500">
+          § Vol. 03 · Curriculum vitae
+        </p>
+        <h1 class="mt-6 font-serif text-5xl md:text-7xl lg:text-[6.5rem] leading-[0.95] text-primary-900 max-w-[14ch]">
+          <span class="italic highlight">Résumé</span>.
+        </h1>
+      </div>
+      <a
+        href="#"
+        class="mt-4 md:mt-14 group inline-flex items-center gap-3 rounded-full bg-primary-900 text-primary-50 px-5 py-3 text-sm tracking-wide hover:bg-primary-950 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70"
+      >
+        <span class="size-1.5 rounded-full bg-accent"></span>
+        <span>Download PDF</span>
+        <span aria-hidden="true" class="inline-block transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
+      </a>
+    </div>
+
+    <p class="mt-8 max-w-xl text-primary-700 text-lg md:text-xl leading-relaxed">
+      A selective history — roles, schooling, and the tools I reach for often.
+      Paper copies on request.
+    </p>
+  </section>
+
+  <!-- Experience -->
+  <section class="container mx-auto px-4 md:px-6 py-12 md:py-16 border-t border-primary-200/70">
+    <h2 class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500 mb-8">Experience</h2>
+    <ol class="divide-y divide-dashed divide-primary-300/80 border-y border-dashed border-primary-300/80">
+      {
+        experience.map(({ period, role, org, notes }) => (
+          <li class="grid grid-cols-1 md:grid-cols-[12rem_1fr] items-baseline gap-4 md:gap-10 py-8">
+            <p class="font-mono text-sm text-primary-500 whitespace-nowrap">{period}</p>
+            <div>
+              <p class="font-serif text-2xl md:text-3xl text-primary-900">{role}</p>
+              <p class="mt-1 font-serif italic text-primary-600">{org}</p>
+              <p class="mt-3 max-w-2xl text-primary-700 leading-relaxed">{notes}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <!-- Education -->
+  <section class="container mx-auto px-4 md:px-6 py-12 md:py-16 border-t border-primary-200/70">
+    <h2 class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500 mb-8">Education</h2>
+    <ol class="divide-y divide-dashed divide-primary-300/80 border-y border-dashed border-primary-300/80">
+      {
+        education.map(({ period, role, org, notes }) => (
+          <li class="grid grid-cols-1 md:grid-cols-[12rem_1fr] items-baseline gap-4 md:gap-10 py-8">
+            <p class="font-mono text-sm text-primary-500 whitespace-nowrap">{period}</p>
+            <div>
+              <p class="font-serif text-2xl md:text-3xl text-primary-900">{role}</p>
+              <p class="mt-1 font-serif italic text-primary-600">{org}</p>
+              <p class="mt-3 max-w-2xl text-primary-700 leading-relaxed">{notes}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <!-- Toolbox -->
+  <section class="container mx-auto px-4 md:px-6 py-12 md:py-24 border-t border-primary-200/70">
+    <h2 class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500 mb-8">Toolbox</h2>
+    <dl class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14">
+      {
+        Object.entries(skills).map(([category, items]) => (
+          <div>
+            <dt class="font-serif italic text-2xl text-primary-900 mb-4">{category}</dt>
+            <dd>
+              <ul class="flex flex-wrap gap-2">
+                {items.map((skill) => (
+                  <li class="font-mono uppercase text-[11px] tracking-[0.16em] text-primary-700 border border-primary-300/80 rounded-full px-3 py-1.5">
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
 </Layout>

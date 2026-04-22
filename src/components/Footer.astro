@@ -97,11 +97,23 @@ const location = "Hattingen, DE";
 		<div
 			class="container mx-auto px-4 md:px-6 py-5
              flex flex-col md:flex-row md:items-center md:justify-between gap-3
-             font-mono uppercase text-[10px] tracking-[0.22em] text-primary-500">
-			<p class="flex items-center gap-2">
+             font-mono uppercase text-[9px] tracking-[0.22em] text-primary-500">
+			<p class="flex flex-wrap items-center gap-x-2 gap-y-1">
 				<span>© {year} — Tristan</span>
 				<span class="text-primary-300">/</span>
 				<span>{location}</span>
+				<span class="text-primary-300">—</span>
+				<span>code assistance</span>
+				<a
+					href="https://infinitel8p.com/"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-primary-700 hover:text-accent transition-colors
+                   underline decoration-primary-300 hover:decoration-accent
+                   underline-offset-[3px] decoration-[1.5px]
+                   focus-visible:outline-none focus-visible:text-accent">
+					Ludo
+				</a>
 			</p>
 			<button
 				type="button"

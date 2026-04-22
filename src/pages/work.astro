@@ -1,7 +1,103 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import Layout from "../layouts/Layout.astro";
+
+const projects = [
+  {
+    year: 2026,
+    title: "Vesper Studio",
+    client: "Vesper Ceramics",
+    summary: "Brand system and identity for a ceramics studio rooted in slow craft.",
+    tags: ["Brand", "Typography", "Packaging"],
+  },
+  {
+    year: 2025,
+    title: "Offline Atlas",
+    client: "Self-initiated",
+    summary: "A field guide to analog places worth visiting in the era of screens.",
+    tags: ["Product", "Editorial", "Maps"],
+  },
+  {
+    year: 2025,
+    title: "Low & Slow",
+    client: "Independent",
+    summary: "A recipe archive for long-cooked meals, built to outlive its CMS.",
+    tags: ["Web", "Content", "Illustration"],
+  },
+  {
+    year: 2024,
+    title: "Harbour",
+    client: "Private client",
+    summary: "A shipping-schedule manager that turned spreadsheets into a calm tool.",
+    tags: ["Product", "Engineering"],
+  },
+  {
+    year: 2023,
+    title: "Signal Press",
+    client: "Signal Press",
+    summary: "An independent publisher's digital storefront, with a bookshop's warmth.",
+    tags: ["E-commerce", "Brand"],
+  },
+];
 ---
 
 <Layout>
-    yoooo
+  <section class="container mx-auto px-4 md:px-6 py-16 md:py-24">
+    <p class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500">
+      § Vol. 02 · Portfolio
+    </p>
+    <h1 class="mt-6 font-serif text-5xl md:text-7xl lg:text-[6.5rem] leading-[0.95] text-primary-900 max-w-[14ch]">
+      Selected <span class="italic highlight">work</span>.
+    </h1>
+    <p class="mt-8 max-w-xl text-primary-700 text-lg md:text-xl leading-relaxed">
+      A short archive of things I've made — clients, side projects, and quiet experiments.
+      In reverse chronological order, as the best diaries are.
+    </p>
+  </section>
+
+  <section class="container mx-auto px-4 md:px-6 pb-20 md:pb-28">
+    <div class="flex items-baseline justify-between mb-6 gap-4">
+      <p class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500">
+        Entries · {projects.length}
+      </p>
+      <p class="font-mono uppercase text-[11px] tracking-[0.2em] text-primary-400 hidden md:block">
+        Year · Title · Tags
+      </p>
+    </div>
+
+    <ul class="border-y border-dashed border-primary-300/80 divide-y divide-dashed divide-primary-300/80">
+      {
+        projects.map(({ year, title, client, summary, tags }) => (
+          <li>
+            <a
+              href="#"
+              class="group grid grid-cols-1 md:grid-cols-[5rem_1fr_auto] items-baseline gap-4 md:gap-10 py-8 md:py-10"
+            >
+              <span class="font-mono text-base text-primary-500">{year}</span>
+              <div class="min-w-0">
+                <p class="flex items-baseline gap-3 flex-wrap">
+                  <span class="font-serif text-3xl md:text-4xl lg:text-5xl text-primary-900 transition-transform duration-300 group-hover:translate-x-1">
+                    {title}
+                  </span>
+                  <span class="font-serif italic text-lg text-primary-500">{client}</span>
+                </p>
+                <p class="mt-3 max-w-2xl text-primary-700 leading-relaxed">{summary}</p>
+              </div>
+              <ul class="flex flex-wrap gap-2 md:justify-end md:max-w-xs">
+                {tags.map((tag) => (
+                  <li class="font-mono uppercase text-[10px] tracking-[0.18em] text-primary-600 border border-primary-300/80 rounded-full px-2.5 py-1">
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="mt-10 max-w-xl font-serif italic text-primary-600 leading-relaxed">
+      More in the drawer — writings, half-finished things, and work under embargo.
+      Ask and I may send a private preview.
+    </p>
+  </section>
 </Layout>
