@@ -1,11 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const currently = [
-  { label: "Working on", value: "web portfolio" },
-  { label: "Reading", value: "Erich Fromm, The Art of Loving" },
-];
-
 const recent = [
   { year: 2026, title: "Vesper Studio", kind: "Brand system" },
   { year: 2025, title: "Offline Atlas", kind: "Product · field guide" },
@@ -30,20 +25,16 @@ const recent = [
     </div>
   </section>
 
-  <!-- Currently -->
-  <section class="container mx-auto px-4 md:px-6 py-12 md:py-20 border-t border-primary-200/70">
-    <p class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500">Currently</p>
-    <dl class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-      {
-        currently.map(({ label, value }) => (
-          <div class="flex flex-col gap-1.5">
-            <dt class="font-mono uppercase text-[11px] tracking-[0.2em] text-primary-400">{label}</dt>
-            <dd class="font-serif text-xl md:text-2xl leading-snug text-primary-900">{value}</dd>
-          </div>
-        ))
-      }
-    </dl>
-  </section>
+	<!-- "Cut here" divider -->
+	<div class="container mx-auto px-4 md:px-6" aria-hidden="true">
+		<div class="flex items-center gap-4 text-primary-400">
+			<span
+				class="font-mono uppercase text-[10px] tracking-[0.22em] text-primary-500 whitespace-nowrap">
+				Platzhalter für video loop
+			</span>
+			<div class="flex-1 border-t border-dashed border-primary-300"></div>
+		</div>
+	</div>
 
   <!-- Recent -->
 
