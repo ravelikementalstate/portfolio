@@ -2,9 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 
 const currently = [
-  { label: "Location", value: "Hattingen, DE — GMT+1" },
-  { label: "Working on", value: "A quiet product for archivists" },
-  { label: "Reading", value: "Italo Calvino, Invisible Cities" },
+  { label: "Working on", value: "web portfolio" },
+  { label: "Reading", value: "Erich Fromm, The Art of Loving" },
 ];
 
 const recent = [
@@ -16,25 +15,18 @@ const recent = [
 
 <Layout>
   <section class="container mx-auto px-4 md:px-6 py-16 md:py-24">
-    <p class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500">
-      § Vol. 01 · Correspondence
-    </p>
 
-    <h1 class="mt-6 font-serif text-5xl md:text-7xl lg:text-[6.5rem] leading-[0.95] text-primary-900 max-w-[16ch]">
-      Dear <span class="italic highlight">reader</span>,
-    </h1>
+    <div class="text-primary-800 text-3xl md:text-6xl font-semibold px-4">
+      <p>
+        Hi, I'm Tristan <br>
+        An Inventor creating electronic devices from idea to working prototype.
+        <br>
+        Sketching, designing, building, soldering, and programming every part.
+        <br>
+        Feel free to <a href="/work" class="highlight">explore my work</a> and see what I'm building.
+      </p>
+    </div>
 
-    <div class="mt-10 max-w-2xl text-primary-700 text-lg md:text-xl leading-relaxed space-y-5">
-      <p>
-        I'm Tristan — a <span class="italic">creative technologist</span> living in a small town with a big library.
-        I build thoughtful, durable software with a designer's patience and a writer's fondness for revision.
-      </p>
-      <p>
-        This is a working journal: a record of
-        <a href="/work" class="highlight">projects</a>, a
-        <a href="/resume" class="highlight">résumé</a>, and
-        <a href="/contact" class="highlight">an address to write to</a>.
-      </p>
     </div>
   </section>
 
@@ -54,32 +46,5 @@ const recent = [
   </section>
 
   <!-- Recent -->
-  <section class="container mx-auto px-4 md:px-6 py-12 md:py-24 border-t border-primary-200/70">
-    <div class="flex items-baseline justify-between mb-8 gap-4">
-      <p class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500">Recent</p>
-      <a href="/work" class="font-serif italic text-primary-800 hover:text-primary-950 transition-colors">
-        See all →
-      </a>
-    </div>
-    <ul class="divide-y divide-dashed divide-primary-300/80 border-y border-dashed border-primary-300/80">
-      {
-        recent.map(({ year, title, kind }) => (
-          <li>
-            <a
-              href="/work"
-              class="group grid grid-cols-[3.5rem_1fr_auto] items-baseline gap-4 py-5 md:py-6"
-            >
-              <span class="font-mono text-sm text-primary-500">{year}</span>
-              <span class="font-serif text-2xl md:text-3xl text-primary-900 transition-transform duration-300 group-hover:translate-x-1">
-                {title}
-              </span>
-              <span class="font-mono uppercase text-[11px] tracking-[0.16em] text-primary-500 group-hover:text-accent transition-colors">
-                {kind} <span aria-hidden="true">↗</span>
-              </span>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+
 </Layout>

@@ -1,12 +1,10 @@
 ---
 const links = [
-	{ url: "/", name: "Index", hideOnMobile: true },
+	{ url: "/", name: "Home", hideOnMobile: true },
 	{ url: "/work", name: "Work" },
 	{ url: "/resume", name: "Résumé" },
 	{ url: "/contact", name: "Contact" },
 ];
-
-const monogram = "T";
 
 function normalize(path: string) {
 	const base = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -33,29 +31,15 @@ function isActive(href: string) {
 		href="/"
 		aria-label="Home"
 		class="group relative justify-self-start shrink-0 inline-flex items-center gap-3 focus-visible:outline-none">
-		<span
-			class="relative grid place-items-center size-11 rounded-full
-             bg-primary-900 text-primary-50
-             shadow-[inset_0_0_0_1px_var(--color-primary-800),0_1px_0_0_var(--color-primary-300)]
-             rotate-[-4deg] transition-transform duration-500
-             group-hover:rotate-6">
-			<span
-				class="font-serif text-[1.35rem] leading-none pt-0.5 -translate-y-px italic">
-				{monogram}
-			</span>
-			<span
-				class="absolute inset-0 rounded-full border border-dashed border-primary-400/60
-               scale-[1.18] opacity-60 pointer-events-none"
-				aria-hidden="true"></span>
-		</span>
+
 		<span class="hidden sm:flex flex-col leading-none">
 			<span
-				class="font-serif text-[0.95rem] tracking-tight text-primary-900">
+				class="font-serif text-[2rem] tracking-tight text-primary-900">
 				tristan.h
 			</span>
 			<span
-				class="font-mono uppercase text-[10px] tracking-[0.18em] text-primary-500 mt-0.5">
-				Creative Technologist
+				class="font-mono uppercase text-[0.95rem] tracking-[0.18em] text-primary-500 mt-0.5">
+				maker & inventor
 			</span>
 		</span>
 	</a>
@@ -66,12 +50,12 @@ function isActive(href: string) {
 		data-nav-container>
 		<div
 			id="nav-indicator"
-			class="absolute left-0 top-0 z-0 rounded-full bg-primary-900
+			class="absolute left-0 top-0 z-0 bg-transparent border border-primary-900
              transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
              opacity-0 pointer-events-none"
 			transition:persist>
 		</div>
-		<ul class="relative flex items-center justify-center gap-1 px-2">
+		<ul class="relative flex items-center justify-center gap-4 px-2">
 			{
 				links.map(({ url, name, hideOnMobile }) => {
 					const active = isActive(url);
@@ -88,7 +72,7 @@ function isActive(href: string) {
 									"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70",
 									active
 										? "text-accent"
-										: "text-primary-800 hover:text-primary-50",
+										: "text-primary-800 hover:text-accent/80",
 								]}>
 								{name}
 							</a>
