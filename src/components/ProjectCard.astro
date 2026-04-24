@@ -57,10 +57,10 @@ const external = link.startsWith("http");
   </div>
 
   <div class="min-w-0">
-    <h3 class="font-serif text-3xl md:text-4xl leading-[1.05] text-primary-900 transition-transform duration-300">
+    <h3 class="text-3xl md:text-4xl leading-[1.05] text-primary-900 transition-transform duration-300">
       {name}
     </h3>
-    <p class="mt-2 font-serif italic text-lg text-primary-500">{kind}</p>
+    <p class="mt-2 italic text-lg text-primary-500">{kind}</p>
   </div>
 
   <p class="max-w-[52ch] text-primary-700 leading-relaxed">{description}</p>
@@ -107,9 +107,12 @@ const external = link.startsWith("http");
       var(--corner-thickness) var(--corner-size),
       var(--corner-size) var(--corner-thickness),
       var(--corner-thickness) var(--corner-size);
+    @apply transition-[background-size] duration-500;
   }
 
   a:hover .project-corners {
     --corner-thickness: 4px;
+    --corner-color: var(--accent-color-hex);
+    opacity: 60%;
   }
 </style>

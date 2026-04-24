@@ -1,0 +1,29 @@
+.nav-corners {
+    --corner-size: 10px;
+    --corner-thickness: 1px;
+    --corner-color: var(--color-primary-900);
+    background-image:
+        linear-gradient(var(--corner-color), var(--corner-color)),
+        linear-gradient(var(--corner-color), var(--corner-color)),
+        linear-gradient(var(--corner-color), var(--corner-color)),
+        linear-gradient(var(--corner-color), var(--corner-color)),
+        linear-gradient(var(--corner-color), var(--corner-color)),
+        linear-gradient(var(--corner-color), var(--corner-color)),
+        linear-gradient(var(--corner-color), var(--corner-color)),
+        linear-gradient(var(--corner-color), var(--corner-color));
+    background-repeat: no-repeat;
+    background-position:
+        top left, top left,
+        top right, top right,
+        bottom left, bottom left,
+        bottom right, bottom right;
+    background-size:
+        var(--corner-size) var(--corner-thickness),
+        var(--corner-thickness) var(--corner-size),
+        var(--corner-size) var(--corner-thickness),
+        var(--corner-thickness) var(--corner-size),
+        var(--corner-size) var(--corner-thickness),
+        var(--corner-thickness) var(--corner-size),
+        var(--corner-size) var(--corner-thickness),
+        var(--corner-thickness) var(--corner-size);
+}
