@@ -46,7 +46,7 @@ function isActive(href: string) {
 
 	<!-- Pill nav -->
 	<div
-		class="relative justify-self-center max-w-full overflow-x-auto no-scrollbar"
+		class="relative max-w-full overflow-x-auto no-scrollbar"
 		data-nav-container>
 		<div
 			id="nav-indicator"
@@ -68,7 +68,7 @@ function isActive(href: string) {
 								class:list={[
 									"relative z-10 block whitespace-nowrap rounded-full",
 									"px-4 md:px-5 py-2.5 text-[0.92rem]",
-									"transition-colors duration-300",
+									"transition-colors duration-1000",
 									"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70",
 									active
 										? "text-accent"
@@ -83,48 +83,40 @@ function isActive(href: string) {
 		</ul>
 	</div>
 
-	<!-- Postmark + theme toggle -->
-	<div class="justify-self-end shrink-0 flex items-center gap-3">
-		<div
-			class="hidden lg:flex flex-col items-end leading-none
-             font-mono uppercase text-[10px] tracking-[0.2em] text-primary-500"
-			aria-hidden="true">
-		</div>
-
-		<button
+	<button
 			type="button"
 			data-theme-toggle
 			aria-label="Toggle color theme"
-			class="relative grid place-items-center size-10 rounded-full
+			class="absolute right-6 top-1/2 -translate-y-1/2 grid place-items-center size-10 rounded-full
              bg-primary-100 text-primary-800 border border-primary-200
              hover:bg-primary-200/70 active:scale-95
-             transition-all duration-300
+             transition-[right] duration-300
              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70">
-			<svg
-				class="size-4.5 transition-transform duration-500"
-				data-theme-icon
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="1.75"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				aria-hidden="true">
-				<!-- Sun (light mode) -->
-				<g data-sun>
-					<circle cx="12" cy="12" r="4.25"></circle>
+				<svg
+					class="size-4.5 transition-transform duration-500"
+					data-theme-icon
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.75"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true">
+					<!-- Sun (light mode) -->
+					<g data-sun>
+						<circle cx="12" cy="12" r="4.25"></circle>
+						<path
+							d="M12 3v1.8M12 19.2V21M3 12h1.8M19.2 12H21M5.3 5.3l1.3 1.3M17.4 17.4l1.3 1.3M5.3 18.7l1.3-1.3M17.4 6.6l1.3-1.3"
+						></path>
+					</g>
+					<!-- Moon (dark mode) -->
 					<path
-						d="M12 3v1.8M12 19.2V21M3 12h1.8M19.2 12H21M5.3 5.3l1.3 1.3M17.4 17.4l1.3 1.3M5.3 18.7l1.3-1.3M17.4 6.6l1.3-1.3"
-					></path>
-				</g>
-				<!-- Moon (dark mode) -->
-				<path
-					data-moon
-					d="M20 14.5A8 8 0 0 1 9.5 4a0.5 0.5 0 0 0-.7-.5A9 9 0 1 0 20.5 15.2a0.5 0.5 0 0 0-.5-.7Z"
-					class="hidden"></path>
-			</svg>
-		</button>
-	</div>
+						data-moon
+						d="M20 14.5A8 8 0 0 1 9.5 4a0.5 0.5 0 0 0-.7-.5A9 9 0 1 0 20.5 15.2a0.5 0.5 0 0 0-.5-.7Z"
+						class="hidden"></path>
+				</svg>
+			</button>
+
 </nav>
 
 <script is:inline>
@@ -231,9 +223,40 @@ function isActive(href: string) {
 			}
 		}
 
+		function initScrollToggle() {
+			const btn = document.querySelector("[data-theme-toggle]");
+			if (!btn) return;
+
+let fixedTop = null;
+		let isFixed = false;
+
+		function toggleFixed() {
+			if (window.scrollY > 0) {
+				if (!isFixed) {
+					fixedTop = btn.getBoundingClientRect().top;
+					isFixed = true;
+				}
+				btn.style.position = 'fixed';
+				btn.style.top = fixedTop + 'px';
+				btn.style.right = 'var(--theme-toggle-right)';
+				btn.style.transform = 'translateY(54%)';
+			} else {
+				isFixed = false;
+					btn.style.position = 'absolute';
+					btn.style.top = '50%';
+					btn.style.right = 'var(--theme-toggle-right)';
+					btn.style.transform = 'translateY(0%)';
+				}
+			}
+
+			window.addEventListener("scroll", toggleFixed);
+			toggleFixed();
+		}
+
 		function boot() {
 			initNav();
 			initTheme();
+			initScrollToggle();
 		}
 
 		document.addEventListener("astro:page-load", boot);

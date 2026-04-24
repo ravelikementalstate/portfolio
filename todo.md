@@ -3,3 +3,4 @@
 - [ ] Navbar kein voller Rahmen, sondern nur die Ecken
 - [ ] Work page, ähnich zu Ludos website projects, jedoch größere kästen mit preview Bild. # ls Katgorisierung nutzen
 - [ ] work cards von ludo übernehmen
+- [ ] hintergrund bild hell und dunkel voneinander trennen und auswählen

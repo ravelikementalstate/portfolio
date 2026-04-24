@@ -88,6 +88,10 @@
     --navbar-height: 4.75rem;
 
     --z-index-nav: 50;
+
+    --theme-toggle-top: 0rem;
+    --theme-toggle-right: 1rem;
+
   }
 
   /* Dark theme: semantic inversion — `bg-primary-100` stays "near surface"
@@ -106,22 +110,31 @@
     --primary-950: oklch(98.5% 0.001 106.423);
   }
 
+  @media (max-width: 768px) {
+    --theme-toggle-top: 1rem;
+    --theme-toggle-right: 1rem;
+  }
+
   html {
     background-color: var(--color-primary-100);
     color: var(--color-primary-900);
   }
 
-  body {
-    background-image: url('/nature-paper.webp');
-    background-size: 560px;
-    background-repeat: repeat;
-    background-blend-mode: multiply;
-  }
+/* LIGHT MODE */
+body {
+  background-image: url('/light-background.png');
+  background-size: 560px;
+  background-repeat: repeat;
+  background-blend-mode: multiply;
+}
 
-  [data-theme='dark'] body {
-    background-blend-mode: overlay;
-    opacity: 1;
-  }
+/* DARK MODE */
+[data-theme='dark'] body {
+  background-image: url('/dark-background.png');
+  background-size: 560px;
+  background-repeat: repeat;
+  background-blend-mode: overlay;
+}
 
   .highlight {
     @apply relative whitespace-nowrap;
@@ -151,4 +164,11 @@
       background-position: bottom right;
     }
   }
+}
+
+.fixed-theme-toggle {
+  position: fixed;
+  top: var(--theme-toggle-top);
+  right: var(--theme-toggle-right);
+  z-index: 1000;
 }
