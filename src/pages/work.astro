@@ -1,20 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ProjectCard, { type Project } from "../components/ProjectCard.astro";
 
-const projects = [
+const projects: Project[] = [
   {
     year: 2026,
-    title: "Vesper Studio",
-    client: "Vesper Ceramics",
-    summary: "Brand system and identity for a ceramics studio rooted in slow craft.",
-    tags: ["Brand", "Typography", "Packaging"],
+    name: "Vesper Studio",
+    kind: "Brand system · Vesper Ceramics",
+    description: "Brand system and identity for a ceramics studio rooted in slow craft.",
+    stack: ["Brand", "Typography", "Packaging"],
+    link: "#",
+    status: "shipped",
   },
   {
     year: 2025,
-    title: "Offline Atlas",
-    client: "Self-initiated",
-    summary: "A field guide to analog places worth visiting in the era of screens.",
-    tags: ["Product", "Editorial", "Maps"],
+    name: "Offline Atlas",
+    kind: "Editorial · Self-initiated",
+    description: "A field guide to analog places worth visiting in the era of screens.",
+    stack: ["Product", "Editorial", "Maps"],
+    link: "#",
+    status: "in progress",
   },
 ];
 
@@ -26,8 +31,8 @@ const currently = [
 
 <Layout>
   <section class="container mx-auto px-4 md:px-6 py-16 md:py-24">
-    <h1 class="mt-6 font-serif text-5xl md:text-7xl lg:text-[6.5rem] leading-[0.95] text-primary-900 max-w-[14ch]">
-      Selected <span class="italic highlight">work</span>.
+    <h1 class="mt-6 text-5xl md:text-7xl lg:text-[6.5rem] leading-[0.95] text-primary-900 max-w-[14ch]">
+      Selected <span class="highlight">work</span>.
     </h1>
     <p class="mt-8 max-w-xl text-primary-700 text-lg md:text-xl leading-relaxed">
       A short archive of things I've made — clients, side projects, and quiet experiments.
@@ -45,36 +50,11 @@ const currently = [
       </p>
     </div>
 
-    <ul class="border-y border-dashed border-primary-300/80 divide-y divide-dashed divide-primary-300/80">
-      {
-        projects.map(({ year, title, client, summary, tags }) => (
-          <li>
-            <a
-              href="#"
-              class="group grid grid-cols-1 md:grid-cols-[5rem_1fr_auto] items-baseline gap-4 md:gap-10 py-8 md:py-10"
-            >
-              <span class="font-mono text-base text-primary-500">{year}</span>
-              <div class="min-w-0">
-                <p class="flex items-baseline gap-3 flex-wrap">
-                  <span class="font-serif text-3xl md:text-4xl lg:text-5xl text-primary-900 transition-transform duration-300 group-hover:translate-x-1">
-                    {title}
-                  </span>
-                  <span class="font-serif italic text-lg text-primary-500">{client}</span>
-                </p>
-                <p class="mt-3 max-w-2xl text-primary-700 leading-relaxed">{summary}</p>
-              </div>
-              <ul class="flex flex-wrap gap-2 md:justify-end md:max-w-xs">
-                {tags.map((tag) => (
-                  <li class="font-mono uppercase text-[10px] tracking-[0.18em] text-primary-600 border border-primary-300/80 rounded-full px-2.5 py-1">
-                    {tag}
-                  </li>
-                ))}
-              </ul>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(21rem,100%),1fr))] gap-6">
+      {projects.map((project, i) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
 
     <p class="mt-10 max-w-xl font-serif italic text-primary-600 leading-relaxed">
       More in the drawer — writings, half-finished things, and work under embargo.
