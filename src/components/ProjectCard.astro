@@ -21,10 +21,16 @@ const external = link.startsWith("http");
   target={external ? "_blank" : undefined}
   rel={external ? "noreferrer" : undefined}
   class:list={[
-    "group flex flex-col gap-5 no-underline text-inherit",
+    "group relative flex flex-col gap-5 no-underline text-inherit",
     extraClass,
   ]}
 >
+  <!-- Corners background layer - appears on hover -->
+  <div 
+    class="absolute -inset-3 pointer-events-none project-corners opacity-10 group-hover:opacity-100 transition-all duration-300"
+    aria-hidden="true"
+  />
+  
   <div class="relative aspect-16/10 overflow-hidden border border-primary-300 bg-primary-200/40 transition-colors duration-500 group-hover:border-primary-500">
     {image ? (
       <img
@@ -51,7 +57,7 @@ const external = link.startsWith("http");
   </div>
 
   <div class="min-w-0">
-    <h3 class="font-serif text-3xl md:text-4xl leading-[1.05] text-primary-900 transition-transform duration-300 group-hover:translate-x-1">
+    <h3 class="font-serif text-3xl md:text-4xl leading-[1.05] text-primary-900 transition-transform duration-300">
       {name}
     </h3>
     <p class="mt-2 font-serif italic text-lg text-primary-500">{kind}</p>
@@ -71,5 +77,39 @@ const external = link.startsWith("http");
       color-mix(in oklab, var(--color-primary-400) 35%, transparent) 0 1px,
       transparent 1px 14px
     );
+  }
+
+  .project-corners {
+    --corner-size: 30px;
+    --corner-thickness: 1px;
+    --corner-color: var(--color-primary-900);
+    background-image:
+      linear-gradient(var(--corner-color), var(--corner-color)),
+      linear-gradient(var(--corner-color), var(--corner-color)),
+      linear-gradient(var(--corner-color), var(--corner-color)),
+      linear-gradient(var(--corner-color), var(--corner-color)),
+      linear-gradient(var(--corner-color), var(--corner-color)),
+      linear-gradient(var(--corner-color), var(--corner-color)),
+      linear-gradient(var(--corner-color), var(--corner-color)),
+      linear-gradient(var(--corner-color), var(--corner-color));
+    background-repeat: no-repeat;
+    background-position:
+      top left, top left,
+      top right, top right,
+      bottom left, bottom left,
+      bottom right, bottom right;
+    background-size:
+      var(--corner-size) var(--corner-thickness),
+      var(--corner-thickness) var(--corner-size),
+      var(--corner-size) var(--corner-thickness),
+      var(--corner-thickness) var(--corner-size),
+      var(--corner-size) var(--corner-thickness),
+      var(--corner-thickness) var(--corner-size),
+      var(--corner-size) var(--corner-thickness),
+      var(--corner-thickness) var(--corner-size);
+  }
+
+  a:hover .project-corners {
+    --corner-thickness: 4px;
   }
 </style>

@@ -172,3 +172,7 @@ body {
   right: var(--theme-toggle-right);
   z-index: 1000;
 }
+
+a:hover .project-corners {
+  --corner-thickness: 4px;
+}
