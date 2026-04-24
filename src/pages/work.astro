@@ -3,83 +3,123 @@ import Layout from "../layouts/Layout.astro";
 import ProjectCard, { type Project } from "../components/ProjectCard.astro";
 
 const projects: Project[] = [
-  {
-    year: 2026,
-    name: "Vesper Studio",
-    kind: "Brand system · Vesper Ceramics",
-    description: "Brand system and identity for a ceramics studio rooted in slow craft.",
-    stack: ["Brand", "Typography", "Packaging"],
-    link: "#",
-    status: "shipped",
-  },
-  {
-    year: 2025,
-    name: "Offline Atlas",
-    kind: "Editorial · Self-initiated",
-    description: "A field guide to analog places worth visiting in the era of screens.",
-    stack: ["Product", "Editorial", "Maps"],
-    link: "#",
-    status: "in progress",
-  },
+	{
+		year: 2026,
+		name: "Vesper Studio",
+		kind: "Brand system · Vesper Ceramics",
+		description:
+			"Brand system and identity for a ceramics studio rooted in slow craft.",
+		stack: ["Brand", "Typography", "Packaging"],
+		link: "#",
+		status: "shipped",
+	},
+	{
+		year: 2025,
+		name: "Offline Atlas",
+		kind: "Editorial · Self-initiated",
+		description:
+			"A field guide to analog places worth visiting in the era of screens.",
+		stack: ["Product", "Editorial", "Maps"],
+		link: "#",
+		status: "in progress",
+	},
+	{
+		year: 2024,
+		name: "Quiet Hours",
+		kind: "Product · Self-initiated",
+		description:
+			"A weather app that only tells you when it's worth looking up. Minimal nudges, no infinite forecast scroll.",
+		stack: ["iOS", "Swift", "Weather API"],
+		link: "#",
+		status: "shipped",
+	},
+	{
+		year: 2024,
+		name: "Margin Notes",
+		kind: "Editorial · Personal",
+		description:
+			"A year of handwritten notes in the margins of books I loved, transcribed and typeset in monospace.",
+		stack: ["Writing", "Typesetting", "Archive"],
+		link: "#",
+		status: "shipped",
+	},
+	{
+		year: 2023,
+		name: "Paper Routes",
+		kind: "Experiment · Self-initiated",
+		description:
+			"A generative print series based on walking routes through neighbourhoods at dusk, drawn on a pen plotter.",
+		stack: ["Generative", "Plotter", "Print"],
+		link: "#",
+		status: "archived",
+	},
 ];
 
 const currently = [
-  { label: "Working on", values: ["web portfolio", "Lampe"] },
-  { label: "Reading", values: "Erich Fromm, The Art of Loving" },
+	{ label: "Working on", values: ["web portfolio", "Lampe"] },
+	{ label: "Reading", values: "Erich Fromm, The Art of Loving" },
 ];
 ---
 
 <Layout>
-  <section class="container mx-auto px-4 md:px-6 py-16 md:py-24">
-    <h1 class="mt-6 text-5xl md:text-7xl lg:text-[6.5rem] leading-[0.95] text-primary-900 max-w-[14ch]">
-      Selected <span class="highlight">work</span>.
-    </h1>
-    <p class="mt-8 max-w-xl text-primary-700 text-lg md:text-xl leading-relaxed">
-      A short archive of things I've made — clients, side projects, and quiet experiments.
-      In reverse chronological order, as the best diaries are.
-    </p>
-  </section>
+	<section class="container mx-auto px-4 md:px-6 py-16 md:py-24">
+		<h1
+			class="mt-6 text-5xl md:text-7xl lg:text-[6.5rem] leading-[0.95] text-primary-900 max-w-[14ch]">
+			Selected <span class="highlight">work</span>.
+		</h1>
+		<p
+			class="mt-8 max-w-xl text-primary-700 text-lg md:text-xl leading-relaxed">
+			A short archive of things I've made — clients, side projects, and
+			quiet experiments. In reverse chronological order, as the best
+			diaries are.
+		</p>
+	</section>
 
-  <section class="container mx-auto px-4 md:px-6 pb-20 md:pb-28">
-    <div class="flex items-baseline justify-between mb-6 gap-4">
-      <p class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500">
-        Entries · {projects.length}
-      </p>
-      <p class="font-mono uppercase text-[11px] tracking-[0.2em] text-primary-400 hidden md:block">
-        Year · Title · Tags
-      </p>
-    </div>
+	<section class="container mx-auto px-4 md:px-6 pb-20 md:pb-28">
+		<div class="flex items-baseline justify-between mb-6 gap-4">
+			<p
+				class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500">
+				Entries · {projects.length}
+			</p>
+		</div>
 
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(21rem,100%),1fr))] gap-6">
-      {projects.map((project, i) => (
-        <ProjectCard project={project} />
-      ))}
-    </div>
+		<div
+			class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-14 md:gap-y-20">
+			{projects.map((project) => <ProjectCard project={project} />)}
+		</div>
 
-    <p class="mt-10 max-w-xl font-serif italic text-primary-600 leading-relaxed">
-      More in the drawer — writings, half-finished things, and work under embargo.
-      Ask and I may send a private preview.
-    </p>
-  </section>
+		<p
+			class="mt-10 font-serif italic text-primary-600 leading-relaxed">
+			More in the drawer — writings, half-finished things, and work under
+			embargo. Ask and I may send a private preview.
+		</p>
+	</section>
 
-  <!-- Currently -->
-  <section class="container mx-auto px-4 md:px-6 py-12 md:py-20 border-t border-primary-200/70">
-    <p class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500">Currently</p>
-    <dl class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-      {
-        currently.map(({ label, values }) => {
-          const items = Array.isArray(values) ? values : [values];
-          return (
-            <div class="flex flex-col gap-1.5">
-              <dt class="font-mono uppercase text-[11px] tracking-[0.2em] text-primary-400">{label}</dt>
-              {items.map((item) => (
-                <dd class="font-serif text-xl md:text-2xl leading-snug text-primary-900">{item}</dd>
-              ))}
-            </div>
-          );
-        })
-      }
-    </dl>
-  </section>
-
+	<!-- Currently -->
+	<section
+		class="container mx-auto px-4 md:px-6 py-12 md:py-20 border-t border-primary-200/70">
+		<p
+			class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500">
+			Currently
+		</p>
+		<dl class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+			{
+				currently.map(({ label, values }) => {
+					const items = Array.isArray(values) ? values : [values];
+					return (
+						<div class="flex flex-col gap-1.5">
+							<dt class="font-mono uppercase text-[11px] tracking-[0.2em] text-primary-400">
+								{label}
+							</dt>
+							{items.map((item) => (
+								<dd class="font-serif text-xl md:text-2xl leading-snug text-primary-900">
+									{item}
+								</dd>
+							))}
+						</div>
+					);
+				})
+			}
+		</dl>
+	</section>
 </Layout>
