@@ -82,8 +82,11 @@
     --primary-900: oklch(21.6% 0.006 56.043);
     --primary-950: oklch(14.7% 0.004 49.25);
 
-    --accent-color: 255 168 8;
-    --accent-color-hex: #ffa808;
+    /*--accent-color: 255 168 8;
+    --accent-color-hex: #ffa808;*/
+
+    --accent-color: rgb(175, 253, 0);
+    --accent-color-hex: #affd00;
 
     --navbar-height: 4.75rem;
 

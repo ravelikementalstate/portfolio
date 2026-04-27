@@ -2,7 +2,7 @@
 const links = [
 	{ url: "/", name: "Home", hideOnMobile: true },
 	{ url: "/work", name: "Work" },
-	{ url: "/resume", name: "Résumé" },
+	{ url: "/resume", name: "Resume" },
 	{ url: "/contact", name: "Contact" },
 ];
 
@@ -34,7 +34,7 @@ function isActive(href: string) {
 
 		<span class="hidden sm:flex flex-col leading-none">
 			<span
-				class="font-serif text-[2rem] tracking-tight text-primary-900">
+				class="font-bold text-[2rem] tracking-tight text-primary-900">
 				tristan.h
 			</span>
 			<span
@@ -56,7 +56,7 @@ function isActive(href: string) {
 			style="--corner-size: 10px; --corner-thickness: 0.8px;"
 			transition:persist>
 		</div>
-		<ul class="relative flex items-center justify-center gap-4 px-2">
+		<ul class="font-mono relative flex items-center justify-center gap-4 px-2">
 			{
 				links.map(({ url, name, hideOnMobile }) => {
 					const active = isActive(url);

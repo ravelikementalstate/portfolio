@@ -3,38 +3,51 @@ import Layout from "../layouts/Layout.astro";
 
 const experience = [
   {
-    period: "2024 — Present",
-    role: "Independent designer & engineer",
-    org: "Own practice",
-    notes: "Brand, product, and writing for a short list of collaborators.",
+    period: "Mar 3 – Mar 14, 2025",
+    role: "Robotics Intern",
+    org: "Berger Gruppe, Wuppertal",
+    notes: "Completed a two-week internship in robotics, learning to program ABB industrial robots using RobotStudio. Developed and programmed a robot to play Tic-Tac-Toe."
   },
   {
-    period: "2022 — 2024",
-    role: "Senior designer",
-    org: "Studio Kind, Rotterdam",
-    notes: "Led design on product and brand work for cultural institutions.",
-  },
-  {
-    period: "2019 — 2022",
-    role: "Interaction designer",
-    org: "Werkplaats, Eindhoven",
-    notes: "Shipped interfaces for research tools and civic services.",
+    period: "Oct 1 – Dec 31, 2024",
+    role: "Student Research Assistant",
+    org: "PROLAB, THGA – Technical University of Applied Sciences Georg Agricola, Bochum",
+    notes: "Developed and optimized workflows for mobile data acquisition using smartphone sensors. Evaluated apps and technologies for efficient data collection, real-time transmission, and long-term storage of measurement data."
   },
 ];
 
 const education = [
   {
-    period: "2015 — 2019",
-    role: "BA Graphic Design",
-    org: "Design Academy Eindhoven",
-    notes: "Thesis on typographic systems in civic signage.",
+    period: "Aug 2022 - Present",
+    role: "B.Sc. Mechanical Engineering Student",
+    org: "THGA – Technical University of Applied Sciences Georg Agricola, Bochum",
+    notes: "Currently pursuing a degree in Mechanical Engineering."
+  },
+  {
+    period: "2019 – 2022",
+    role: "Apprenticeship as Bank Clerk",
+    org: "Volksbank Sprockhövel",
+    notes: "Completed vocational training and qualified as a Bank Clerk."
+  },
+  {
+    period: "2011 – 2018",
+    role: "General Higher Education Entrance Qualification (Abitur)",
+    org: "Gymnasium Waldstraße, Hattingen",
+    notes: "Completed secondary education with university entrance qualification."
+  },
+  {
+    period: "2006 – 2010",
+    role: "Primary School Student",
+    org: "Grundschule Oberwinzerfeld, Hattingen",
+    notes: "Primary education."
   },
 ];
 
 const skills = {
-  Design: ["Brand systems", "Editorial", "Typography", "Motion", "Illustration"],
-  Engineering: ["TypeScript", "React", "Astro", "Node", "Svelte"],
-  Tools: ["Figma", "Framer", "Glyphs", "Blender", "Linear"],
+  "Engineering & Design": ["Autodesk Inventor", "CAD Design", "3D Modeling"],
+  "Programming & Development": ["C++ Programming", "Arduino IDE", "RobotStudio Programming", "Visual Studio Code"],
+  "Electronics & Hardware": ["Soldering", "Electronics Assembly", "Hardware Prototyping"],
+  "Productivity & Documentation": ["Microsoft Excel", "Microsoft Word", "Microsoft PowerPoint"],
 };
 ---
 
@@ -62,8 +75,8 @@ const skills = {
           <li class="grid grid-cols-1 md:grid-cols-[12rem_1fr] items-baseline gap-4 md:gap-10 py-8">
             <p class="font-mono text-sm text-primary-500 whitespace-nowrap">{period}</p>
             <div>
-              <p class="font-serif text-2xl md:text-3xl text-primary-900">{role}</p>
-              <p class="mt-1 font-serif italic text-primary-600">{org}</p>
+              <p class="font-bold text-2xl md:text-3xl text-primary-900">{role}</p>
+              <p class="mt-1 font-bold italic text-primary-600">{org}</p>
               <p class="mt-3 max-w-2xl text-primary-700 leading-relaxed">{notes}</p>
             </div>
           </li>
@@ -81,8 +94,8 @@ const skills = {
           <li class="grid grid-cols-1 md:grid-cols-[12rem_1fr] items-baseline gap-4 md:gap-10 py-8">
             <p class="font-mono text-sm text-primary-500 whitespace-nowrap">{period}</p>
             <div>
-              <p class="font-serif text-2xl md:text-3xl text-primary-900">{role}</p>
-              <p class="mt-1 font-serif italic text-primary-600">{org}</p>
+              <p class="font-bold text-2xl md:text-3xl text-primary-900">{role}</p>
+              <p class="mt-1 font-bold italic text-primary-600">{org}</p>
               <p class="mt-3 max-w-2xl text-primary-700 leading-relaxed">{notes}</p>
             </div>
           </li>
@@ -98,7 +111,7 @@ const skills = {
       {
         Object.entries(skills).map(([category, items]) => (
           <div>
-            <dt class="font-serif italic text-2xl text-primary-900 mb-4">{category}</dt>
+            <dt class="font-bold text-2xl text-primary-900 mb-4">{category}</dt>
             <dd>
               <ul class="flex flex-wrap gap-2">
                 {items.map((skill) => (
