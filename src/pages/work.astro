@@ -4,54 +4,54 @@ import ProjectCard, { type Project } from "../components/ProjectCard.astro";
 
 const projects: Project[] = [
 	{
-		year: 2026,
-		name: "Vesper Studio",
-		kind: "Brand system · Vesper Ceramics",
+		year: 2025,
+		name: "Laser Tag Targets",
+		kind: "Self-initiated · Interactive Game System",
 		description:
-			"Brand system and identity for a ceramics studio rooted in slow craft.",
-		stack: ["Brand", "Typography", "Packaging"],
+			"A set of modular laser tag target units built from PVC pipe and translucent baking paper. Each module contains a calibrated photoresistor that detects incoming laser hits from custom-built blasters. The diffused surface ensures reliable detection across the entire target area. Powered by a rechargeable lithium battery via USB-C. Developed as part of an interactive laser tag system for a youth camp.",
+		stack: ["Electronics", "Arduino", "Photoresistor", "C++", "Upcycling", "Battery System"],
 		link: "#",
-		status: "shipped",
+		status: "completed",
 	},
 	{
 		year: 2025,
-		name: "Offline Atlas",
-		kind: "Editorial · Self-initiated",
+		name: "Laser Tag Blasters",
+		kind: "Self-initiated · Interactive Game Hardware",
 		description:
-			"A field guide to analog places worth visiting in the era of screens.",
-		stack: ["Product", "Editorial", "Maps"],
+			"A set of three custom-built laser tag blasters using repurposed water gun and garden hose housings. A lithium battery rechargeable via USB-C powers a laser diode when the trigger is pulled. The blasters were designed as part of an interactive laser tag system created for a youth camp, complementing separate laser target units.",
+		stack: ["Electronics", "Arduino", "Laser Diode", "C++", "Upcycling", "Battery System"],
 		link: "#",
-		status: "in progress",
+		status: "completed",
+	},
+	{
+		year: 2025,
+		name: "Space Ship Systems Game",
+		kind: "Self-initiated · Interactive Game",
+		description:
+			"An interactive reaction-based game set in a space battle scenario. Four system buttons with corresponding LEDs (maintenance, shield, weapon, energy) must be activated when their matching LED lights up. A random sequence of signals progressively speeds up, challenging the player to keep the ship operational. Powered by an Arduino Nano Every and a lithium battery rechargeable via USB-C.",
+		stack: ["Electronics", "Arduino", "LEDs", "C++", "Battery System"],
+		link: "#",
+		status: "completed",
+	},
+	{
+		year: 2025,
+		name: "Emotional Companion Beemo",
+		kind: "Self-initiated · Interactive Device",
+		description:
+			"An interactive emotional companion designed to guide users through different feelings. Six buttons allow selection of emotions and navigation, while an Arduino Nano Every drives a 128x128 OLED display to deliver calming, reflective prompts. The enclosure was designed in CAD and 3D printed. Powered by a lithium battery rechargeable via USB-C.",
+		stack: ["Electronics", "Arduino", "OLED Display", "C++", "CAD", "3D Printing", "Battery System"],
+		link: "#",
+		status: "completed",
 	},
 	{
 		year: 2024,
-		name: "Quiet Hours",
-		kind: "Product · Self-initiated",
+		name: "Magic Wand",
+		kind: "Self-initiated · Prototype",
 		description:
-			"A weather app that only tells you when it's worth looking up. Minimal nudges, no infinite forecast scroll.",
-		stack: ["iOS", "Swift", "Weather API"],
+			"A handcrafted magic wand that translates motion into light. An accelerometer is read by an Arduino Nano Every to control the brightness of a 12V LED at the tip, powered by a lithium battery rechargeable via USB-C.",
+		stack: ["Electronics", "Arduino", "Accelerometer", "LED", "C++", "Woodworking", "Battery System"],
 		link: "#",
-		status: "shipped",
-	},
-	{
-		year: 2024,
-		name: "Margin Notes",
-		kind: "Editorial · Personal",
-		description:
-			"A year of handwritten notes in the margins of books I loved, transcribed and typeset in monospace.",
-		stack: ["Writing", "Typesetting", "Archive"],
-		link: "#",
-		status: "shipped",
-	},
-	{
-		year: 2023,
-		name: "Paper Routes",
-		kind: "Experiment · Self-initiated",
-		description:
-			"A generative print series based on walking routes through neighbourhoods at dusk, drawn on a pen plotter.",
-		stack: ["Generative", "Plotter", "Print"],
-		link: "#",
-		status: "archived",
+		status: "completed",
 	},
 ];
 
@@ -89,11 +89,6 @@ const currently = [
 			{projects.map((project) => <ProjectCard project={project} />)}
 		</div>
 
-		<p
-			class="mt-10 italic text-primary-600 leading-relaxed">
-			More in the drawer — writings, half-finished things, and work under
-			embargo. Ask and I may send a private preview.
-		</p>
 	</section>
 
 	<!-- Currently -->

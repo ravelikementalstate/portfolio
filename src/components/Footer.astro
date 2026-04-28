@@ -86,9 +86,8 @@ const location = "Hattingen, DE";
 	<div class="container px-6 mx-auto">
 		<div
 			class="container border-t py-5 border-primary-200/70 bg-primary-100/40
-             flex flex-col md:flex-row md:items-center md:justify-between gap-3
-             font-mono uppercase text-[9px] tracking-[0.22em] text-primary-500">
-			 
+            flex flex-col md:flex-row md:items-center md:justify-between gap-3
+            font-mono uppercase text-[9px] tracking-[0.22em] text-primary-500">
 			<p class="flex flex-wrap items-center gap-x-2 gap-y-1">
 				<span>© {year} — Tristan</span>
 				<span class="text-primary-300">/</span>
@@ -100,21 +99,21 @@ const location = "Hattingen, DE";
 					target="_blank"
 					rel="noopener noreferrer"
 					class="text-primary-700 hover:text-accent transition-colors
-                   underline decoration-primary-300 hover:decoration-accent
-                   underline-offset-[3px] decoration-[1.5px]
-                   focus-visible:outline-none focus-visible:text-accent">
+                underline decoration-primary-300 hover:decoration-accent
+                underline-offset-[3px] decoration-[1.5px]
+                focus-visible:outline-none focus-visible:text-accent">
 					Ludo
 				</a>
 			</p>
-			<button
-				type="button"
+			<a
+				href="#top"
 				data-top-btn
 				class="self-start md:self-auto inline-flex items-center gap-2 text-primary-500
-               hover:text-primary-900 transition-colors
-               focus-visible:outline-none focus-visible:text-primary-900">
+            hover:text-accent transition-colors
+            focus-visible:outline-none focus-visible:text-accent">
 				<span>Return to top</span>
 				<span aria-hidden="true">↑</span>
-			</button>
+			</a>
 		</div>
 	</div>
 </footer>
@@ -122,11 +121,12 @@ const location = "Hattingen, DE";
 <script is:inline>
 	(function () {
 		function initMail() {
-			const btn = document.querySelector("[data-mail-btn]");
-			if (!btn || btn.__bound) return;
-			btn.__bound = true;
-			btn.addEventListener("click", async () => {
-				const email = btn.dataset.mail;
+			const btns = document.querySelectorAll("[data-mail-btn]");
+			btns.forEach(btn => {
+				if (!btn || btn.__bound) return;
+				btn.__bound = true;
+				btn.addEventListener("click", async () => {
+					const email = btn.dataset.mail;
 				if (!email) return;
 				try {
 					await navigator.clipboard.writeText(email);
@@ -150,7 +150,8 @@ const location = "Hattingen, DE";
 			const btn = document.querySelector("[data-top-btn]");
 			if (!btn || btn.__bound) return;
 			btn.__bound = true;
-			btn.addEventListener("click", () => {
+			btn.addEventListener("click", event => {
+				event.preventDefault();
 				const prefersReduced = window.matchMedia(
 					"(prefers-reduced-motion: reduce)",
 				).matches;

@@ -85,8 +85,11 @@
     /*--accent-color: 255 168 8;
     --accent-color-hex: #ffa808;*/
 
-    --accent-color: rgb(175, 253, 0);
-    --accent-color-hex: #affd00;
+    /*--accent-color: rgb(175, 253, 0);
+    --accent-color-hex: #affd00;*/
+
+    --accent-color: rgb(207, 255, 4);
+    --accent-color-hex: #cfff04;
 
     --navbar-height: 4.75rem;
 

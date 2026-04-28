@@ -1,70 +1,58 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const email = "hello@example.com";
-
-const channels = [
-  {
-    name: "Email",
-    value: email,
-    detail: "Best for briefs and long questions.",
-    action: "Mailto",
-    href: `mailto:${email}`,
-    external: false,
-  },
-  {
-    name: "GitHub",
-    value: "@ravelikementalstate",
-    detail: "Code, open-source, experiments.",
-    action: "Open",
-    href: "https://github.com/ravelikementalstate",
-    external: true,
-  },
-  {
-    name: "LinkedIn",
-    value: "@tristan.h",
-    detail: "Formal enquiries and references.",
-    action: "Open",
-    href: "https://linkedin.com/",
-    external: true,
-  },
-];
+const email = "holz.tristan@gmail.com";
 
 const availability = [
-  { label: "Location", value: "Hattingen, DE — GMT+1" },
+  { label: "Location", value: "Hattingen, Germany — GMT+1" },
   { label: "Response time", value: "Usually within two working days" },
-  { label: "Availability", value: "Accepting new projects from June" },
+  { label: "Availability", value: "Accepting new projects starting August" },
+];
+
+const inquiries = [
+  "Collaboration on technical or creative projects",
+  "Development of prototypes and custom devices",
+  "Electronics, robotics, and embedded systems",
+  "CAD design and mechanical components",
+  "Feedback, problem solving, or technical discussion",
+  "Job opportunities, internships, or project-based work",
 ];
 ---
 
 <Layout>
-  <section class="container mx-auto px-4 md:px-6 py-16 md:py-24">
-    <h1 class="mt-6 text-5xl md:text-7xl lg:text-[6.5rem] leading-[0.95] text-primary-900 max-w-[14ch]">
-      Say <span class="highlight">hello</span>.
+  <section class="container flex flex-col gap-10 mx-auto px-4 md:px-6 py-16 md:py-24 mb-0">
+    <h1 class="text-primary-800 text-3xl md:text-6xl font-semibold px-4">
+      Send an 
+      <button 
+      type="button"
+      data-mail-btn
+      data-mail={email}
+      class="highlight"
+      >Email</button>.
     </h1>
-    <p class="mt-8 max-w-xl text-primary-700 text-lg md:text-xl leading-relaxed">
-      Send a project brief, a hello, or a recipe worth trading. I read everything;
-      replies are usually prompt, occasionally verbose.
+    <p class="text-primary-800 text-2xl md:text-3xl font-semibold px-4 leading-[1.5]">
+      I'm open to collaboration and available for project work and new ideas.
+      <br/><br/>
+      Information about my availability and response times is provided below on this page.
     </p>
 
-    <div class="mt-10">
+    <div class="mt-5">
       <button
         type="button"
         data-mail-btn
         data-mail={email}
-        class="group inline-flex items-center gap-5 rounded-full bg-primary-900 text-primary-50
-               pl-5 pr-4 py-3.5 transition-colors
-               hover:bg-primary-950
-               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70"
+        class="group inline-flex items-center gap-5 text-primary-900
+              pl-5 pr-4 py-3.5 transition-colors
+              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70"
       >
-        <span class="inline-flex items-center gap-2.5 text-[0.95rem] tracking-wide">
-          <span class="size-1.5 rounded-full bg-accent"></span>
+        <span class="font-mono text-primary-700 max-w-4xl text-xl
+        inline-flex items-center gap-2.5 text-[1.5rem] tracking-wide">
           <span>{email}</span>
         </span>
         <span
           class="inline-flex items-center gap-1.5 rounded-full border border-primary-700/70 px-2.5 py-1
-                 font-mono uppercase text-[10px] tracking-[0.18em] text-primary-300
-                 transition-colors group-hover:text-accent group-hover:border-accent/50"
+                font-mono uppercase text-[10px] tracking-[0.18em] text-primary-300
+                transition-colors group-hover:text-accent group-hover:border-accent/50"
           aria-hidden="true"
         >
           <span data-mail-copy-text>Copy</span>
@@ -73,42 +61,31 @@ const availability = [
     </div>
   </section>
 
-  <!-- Channels -->
-  <section class="container mx-auto px-4 md:px-6 py-12 md:py-16 border-t border-primary-200/70">
-    <h2 class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500 mb-8">Channels</h2>
-    <ul class="divide-y divide-dashed divide-primary-300/80 border-y border-dashed border-primary-300/80">
-      {
-        channels.map(({ name, value, detail, action, href, external }) => (
-          <li>
-            <a
-              href={href}
-              target={external ? "_blank" : undefined}
-              rel={external ? "noopener noreferrer" : undefined}
-              class="group grid grid-cols-1 md:grid-cols-[8rem_1fr_auto] items-baseline gap-3 md:gap-10 py-6"
-            >
-              <span class="font-mono uppercase text-[11px] tracking-[0.2em] text-primary-500">
-                {name}
-              </span>
-              <div>
-                <p class="font-serif text-2xl md:text-3xl text-primary-900 transition-transform duration-300 group-hover:translate-x-1">
-                  {value}
-                </p>
-                <p class="font-serif italic text-primary-600 mt-1">{detail}</p>
-              </div>
-              <span class="font-mono uppercase text-[11px] tracking-[0.16em] text-primary-500 group-hover:text-accent transition-colors">
-                {action} <span aria-hidden="true">↗</span>
-              </span>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+
+
+  <!-- Inquiries & Collaboration -->
+  <section class="container mx-auto px-4 md:px-6 py-12 md:py-24 border-t border-primary-200/70">
+    <h2 class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500 mb-8">
+      Inquiries & Collaboration
+    </h2>
+    <div class="max-w-2xl">
+      <p class="font-bold text-xl md:text-2xl text-primary-900 mb-6">You can contact me for:</p>
+      <ul class="space-y-3 text-primary-900">
+        {
+          inquiries.map(item => (
+            <li class="font-mono text-lg md:text-xl">• {item}</li>
+          ))
+        }
+      </ul>
+    </div>
   </section>
+
+
 
   <!-- Availability -->
   <section class="container mx-auto px-4 md:px-6 py-12 md:py-24 border-t border-primary-200/70">
     <h2 class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500 mb-8">
-      Office of correspondence
+      Contact Details & Availability
     </h2>
     <dl class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
       {
@@ -117,7 +94,7 @@ const availability = [
             <dt class="font-mono uppercase text-[11px] tracking-[0.2em] text-primary-400 mb-2">
               {label}
             </dt>
-            <dd class="font-serif text-xl md:text-2xl leading-snug text-primary-900">{value}</dd>
+            <dd class="font-bold text-xl md:text-2xl leading-snug text-primary-900">{value}</dd>
           </div>
         ))
       }
@@ -128,25 +105,31 @@ const availability = [
 <script is:inline>
   (function () {
     function initMail() {
-      const btn = document.querySelector('[data-mail-btn]');
-      if (!btn || btn.__bound) return;
-      btn.__bound = true;
-      btn.addEventListener('click', async () => {
-        const email = btn.dataset.mail;
-        if (!email) return;
-        try {
-          await navigator.clipboard.writeText(email);
-        } catch (_) { /* noop */ }
-        const copyText = btn.querySelector('[data-mail-copy-text]');
-        if (!copyText) return;
-        const prev = copyText.textContent;
-        copyText.textContent = 'Copied';
-        btn.setAttribute('data-copied', 'true');
-        clearTimeout(btn.__t);
-        btn.__t = setTimeout(() => {
-          copyText.textContent = prev || 'Copy';
-          btn.removeAttribute('data-copied');
-        }, 1400);
+      const btns = document.querySelectorAll('[data-mail-btn]');
+      const copyBtn = Array.from(btns).find(btn => btn.querySelector('[data-mail-copy-text]'));
+      btns.forEach(btn => {
+        if (!btn || btn.__bound) return;
+        btn.__bound = true;
+        btn.addEventListener('click', async () => {
+          const email = btn.dataset.mail;
+          if (!email) return;
+          try {
+            await navigator.clipboard.writeText(email);
+          } catch (_) { /* noop */ }
+          if (copyBtn) {
+            const copyText = copyBtn.querySelector('[data-mail-copy-text]');
+            if (copyText) {
+              const prev = copyText.textContent;
+              copyText.textContent = 'Copied';
+              copyBtn.setAttribute('data-copied', 'true');
+              clearTimeout(copyBtn.__t);
+              copyBtn.__t = setTimeout(() => {
+                copyText.textContent = prev || 'Copy';
+                copyBtn.removeAttribute('data-copied');
+              }, 1400);
+            }
+          }
+        });
       });
     }
     function boot() { initMail(); }

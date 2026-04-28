@@ -39,7 +39,7 @@ const { showFooter = true } = Astro.props;
       })();
     </script>
   </head>
-  <body class="font-sans antialiased bg-fixed print:bg-none">
+  <body id="top" class="font-sans antialiased bg-fixed print:bg-none">
     <Navbar />
     <slot />
     {showFooter && <Footer />}

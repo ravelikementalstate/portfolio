@@ -21,7 +21,7 @@ const external = link.startsWith("http");
   target={external ? "_blank" : undefined}
   rel={external ? "noreferrer" : undefined}
   class:list={[
-    "group relative flex flex-col gap-5 no-underline text-inherit",
+    "group relative flex h-full flex-col gap-5 no-underline text-inherit",
     extraClass,
   ]}
 >
@@ -63,9 +63,9 @@ const external = link.startsWith("http");
     <p class="mt-2 italic text-lg text-primary-500">{kind}</p>
   </div>
 
-  <p class="max-w-[52ch] text-primary-700 leading-relaxed">{description}</p>
+  <p class="max-w-[52ch] text-primary-700 leading-relaxed flex-1">{description}</p>
 
-  <p class="font-mono uppercase text-[10px] tracking-[0.2em] text-primary-600">
+  <p class="mt-auto font-mono uppercase text-[10px] tracking-[0.2em] text-primary-600">
     {stack.join(" · ")}
   </p>
 </a>
