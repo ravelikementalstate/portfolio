@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ProjectCard, { type Project } from "../components/ProjectCard.astro";
+import laserTagBild from "/src/assets/testbild.jpg";
+import random_bild from "/src/assets/testbild.jpg";
 
 const projects: Project[] = [
 	{
@@ -12,6 +14,7 @@ const projects: Project[] = [
 		stack: ["Electronics", "Arduino", "Photoresistor", "C++", "Upcycling", "Battery System"],
 		link: "#",
 		status: "completed",
+		image: laserTagBild
 	},
 	{
 		year: 2025,
@@ -22,6 +25,7 @@ const projects: Project[] = [
 		stack: ["Electronics", "Arduino", "Laser Diode", "C++", "Upcycling", "Battery System"],
 		link: "#",
 		status: "completed",
+		image: random_bild
 	},
 	{
 		year: 2025,
@@ -32,6 +36,7 @@ const projects: Project[] = [
 		stack: ["Electronics", "Arduino", "LEDs", "C++", "Battery System"],
 		link: "#",
 		status: "completed",
+		image: random_bild
 	},
 	{
 		year: 2025,
@@ -42,6 +47,7 @@ const projects: Project[] = [
 		stack: ["Electronics", "Arduino", "OLED Display", "C++", "CAD", "3D Printing", "Battery System"],
 		link: "#",
 		status: "completed",
+		image: random_bild
 	},
 	{
 		year: 2024,
@@ -52,12 +58,26 @@ const projects: Project[] = [
 		stack: ["Electronics", "Arduino", "Accelerometer", "LED", "C++", "Woodworking", "Battery System"],
 		link: "#",
 		status: "completed",
+		image: random_bild
+	},
+];
+
+const wipProjects: Project[] = [
+	{
+		year: 2025,
+		name: "Laser Tag Targets",
+		kind: "Self-initiated · Interactive Game System",
+		description:
+			"A set of modular laser tag target units built from PVC pipe and translucent baking paper. Each module contains a calibrated photoresistor that detects incoming laser hits from custom-built blasters. The diffused surface ensures reliable detection across the entire target area. Powered by a rechargeable lithium battery via USB-C. Developed as part of an interactive laser tag system for a youth camp.",
+		stack: ["Electronics", "Arduino", "Photoresistor", "C++", "Upcycling", "Battery System"],
+		link: "#",
+		status: "completed",
+		image: laserTagBild
 	},
 ];
 
 const currently = [
 	{ label: "Working on", values: ["web portfolio", "Lampe"] },
-	{ label: "Reading", values: "Erich Fromm, The Art of Loving" },
 ];
 ---
 
@@ -95,10 +115,10 @@ const currently = [
 	<section
 		class="container mx-auto px-4 md:px-6 py-12 md:py-20 border-t border-primary-200/70">
 		<p
-			class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500">
-			Currently
+			class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500 mb-6">
+			Work in Progress
 		</p>
-		<dl class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+		<!-- <dl class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
 			{
 				currently.map(({ label, values }) => {
 					const items = Array.isArray(values) ? values : [values];
@@ -116,6 +136,11 @@ const currently = [
 					);
 				})
 			}
-		</dl>
+		</dl> -->
+
+		<div
+			class="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-14 md:gap-y-20">
+			{wipProjects.map((project) => <ProjectCard project={project} />)}
+		</div>
 	</section>
 </Layout>

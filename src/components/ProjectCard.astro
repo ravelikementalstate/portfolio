@@ -1,4 +1,6 @@
 ---
+import Image from 'astro/components/Image.astro';
+
 export type Project = {
   name: string;
   year: number;
@@ -33,7 +35,7 @@ const external = link.startsWith("http");
   
   <div class="relative aspect-16/10 overflow-hidden border border-primary-300 bg-primary-200/40 transition-colors duration-500 group-hover:border-primary-500">
     {image ? (
-      <img
+      <Image
         src={image}
         alt={`${name} preview`}
         loading="lazy"
