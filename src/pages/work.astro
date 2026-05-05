@@ -1,7 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ProjectCard, { type Project } from "../components/ProjectCard.astro";
-import laserTagBild from "/src/assets/testbild.jpg";
+import LaserGun from "/src/assets/LaserGun.JPG";
+import LaserTargets from "/src/assets/LaserTargets.PNG";
+import SpaceShipSystemsGame from "/src/assets/Space Ship Systems Game.png";
+import Beemo from "/src/assets/Beemo.png";
+import MagicWand from "/src/assets/MagicWand1.jpg";
+import LampAndRobot from "/src/assets/LampAndRobot.png";
 import random_bild from "/src/assets/testbild.jpg";
 
 const projects: Project[] = [
@@ -14,7 +19,7 @@ const projects: Project[] = [
 		stack: ["Electronics", "Arduino", "Photoresistor", "C++", "Upcycling", "Battery System"],
 		link: "#",
 		status: "completed",
-		image: laserTagBild
+		image: LaserTargets
 	},
 	{
 		year: 2025,
@@ -25,7 +30,7 @@ const projects: Project[] = [
 		stack: ["Electronics", "Arduino", "Laser Diode", "C++", "Upcycling", "Battery System"],
 		link: "#",
 		status: "completed",
-		image: random_bild
+		image: LaserGun
 	},
 	{
 		year: 2025,
@@ -36,7 +41,7 @@ const projects: Project[] = [
 		stack: ["Electronics", "Arduino", "LEDs", "C++", "Battery System"],
 		link: "#",
 		status: "completed",
-		image: random_bild
+		image: SpaceShipSystemsGame
 	},
 	{
 		year: 2025,
@@ -47,7 +52,7 @@ const projects: Project[] = [
 		stack: ["Electronics", "Arduino", "OLED Display", "C++", "CAD", "3D Printing", "Battery System"],
 		link: "#",
 		status: "completed",
-		image: random_bild
+		image: Beemo
 	},
 	{
 		year: 2024,
@@ -58,21 +63,32 @@ const projects: Project[] = [
 		stack: ["Electronics", "Arduino", "Accelerometer", "LED", "C++", "Woodworking", "Battery System"],
 		link: "#",
 		status: "completed",
-		image: random_bild
+		image: MagicWand
 	},
 ];
 
 const wipProjects: Project[] = [
 	{
-		year: 2025,
-		name: "Laser Tag Targets",
-		kind: "Self-initiated · Interactive Game System",
+		year: 2026,
+		name: "Design Lamp",
+		kind: "Self-initiated",
 		description:
-			"A set of modular laser tag target units built from PVC pipe and translucent baking paper. Each module contains a calibrated photoresistor that detects incoming laser hits from custom-built blasters. The diffused surface ensures reliable detection across the entire target area. Powered by a rechargeable lithium battery via USB-C. Developed as part of an interactive laser tag system for a youth camp.",
-		stack: ["Electronics", "Arduino", "Photoresistor", "C++", "Upcycling", "Battery System"],
+			"A handcrafted lamp made from recycled yellow glass panes, cut and ground to uniform size and assembled using the Tiffany glass soldering technique. Currently in progress, with plans to integrate a touch-controlled base using a microcontroller for interactive on/off functionality.",
+		stack: ["Electronics", "Arduino", "Touch Sensor", "Glasswork", "Soldering", "Upcycling", "Battery System"],
 		link: "#",
-		status: "completed",
-		image: laserTagBild
+		status: "in progress",
+		image: LampAndRobot
+	},
+	{
+		year: 2026,
+		name: "Robot Arm / Controller Arm",
+		kind: "Academic Project · Interactive System",
+		description:
+			"A robot arm and matching physical controller with identical dimensions for intuitive operation. Joint angles are measured using potentiometers in the controller arm, transmitted via a microcontroller, and replicated by servos in the robot arm. Being developed as part of my bachelor thesis.",
+		stack: ["Electronics", "Arduino", "Potentiometers", "Servos", "C++", "CAD", "3D Printing"],
+		link: "#",
+		status: "in progress",
+		image: LampAndRobot
 	},
 ];
 
@@ -99,8 +115,8 @@ const currently = [
 	<section class="container mx-auto px-4 md:px-6 pb-20 md:pb-28">
 		<div class="flex items-baseline justify-between mb-6 gap-4">
 			<p
-				class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500">
-				Entries · {projects.length}
+				class="font-mono uppercase text-sm tracking-[0.22em] text-primary-900">
+				completed · {projects.length}
 			</p>
 		</div>
 
@@ -111,11 +127,11 @@ const currently = [
 
 	</section>
 
-	<!-- Currently -->
+	<!-- WIP -->
 	<section
 		class="container mx-auto px-4 md:px-6 py-12 md:py-20 border-t border-primary-200/70">
 		<p
-			class="font-mono uppercase text-sm tracking-[0.22em] text-primary-500 mb-6">
+			class="font-mono uppercase text-[16px] tracking-[0.22em] text-primary-900 mb-6">
 			Work in Progress
 		</p>
 		<!-- <dl class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">

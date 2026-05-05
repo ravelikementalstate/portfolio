@@ -4,8 +4,9 @@
 - [x] work cards von ludo übernehmen
 - [X] Work page, ähnich zu Ludos website projects, jedoch größere kästen mit preview Bild. # ls Katgorisierung nutzen
 - [X] hintergrund bild hell und dunkel voneinander trennen und auswählen
-- [ ] Theme, How to Flex & Troll a scene
 - [X] resume clean up & inhalt
 - [X] contact site designen + info
-- [ ] work project photos
+- [X] work project photos
 - [X] resume soziales engagement(scouts) + travel experience (australia,japan)
+- [X] release
+- [ ] custom domain
