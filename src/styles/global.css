@@ -117,8 +117,10 @@
   }
 
   @media (max-width: 768px) {
-    --theme-toggle-top: 1rem;
-    --theme-toggle-right: 1rem;
+    :root {
+      --theme-toggle-top: 1rem;
+      --theme-toggle-right: 1rem;
+    }
   }
 
   html {
