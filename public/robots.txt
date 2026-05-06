@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://tholz.netlify.app/sitemap-index.xml
