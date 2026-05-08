@@ -9,7 +9,7 @@ interface Props {
 
 const { showFooter = true } = Astro.props;
 
-const SITE_TITLE = 'Tristan - Inventor & Engineer';
+const SITE_TITLE = 'Inventor & Engineer';
 const SITE_DESCRIPTION =
   "Portfolio of Tristan, an inventor and engineer building electronic devices from idea to working prototype - sketching, designing, soldering, and programming every part.";
 const OG_IMAGE = '/og-image.png';
@@ -39,7 +39,7 @@ const ogImageURL = new URL(OG_IMAGE, Astro.site ?? Astro.url).toString();
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Tristan - Inventor & Engineer" />
+    <meta property="og:site_name" content="tholz.space" />
     <meta property="og:title" content={SITE_TITLE} />
     <meta property="og:description" content={SITE_DESCRIPTION} />
     <meta property="og:url" content={canonicalURL} />

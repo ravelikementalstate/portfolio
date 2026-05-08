@@ -9,4 +9,5 @@
 - [X] work project photos
 - [X] resume soziales engagement(scouts) + travel experience (australia,japan)
 - [X] release
-- [ ] custom domain
+- [X] custom domain
+- [ ] Footer- socials orientation on bottom
