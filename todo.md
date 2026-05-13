@@ -11,3 +11,7 @@
 - [X] release
 - [X] custom domain
 - [ ] Footer- socials orientation on bottom
+- [ ] Disable links on project cards so they dont bring you to top of work page
+- [ ] Change home text gramma?
+- [ ] Add LinkedIn and 3D site profile to socials
+- [ ] 
