@@ -18,8 +18,9 @@ const { name, year, kind, description, stack, link, image, status = "shipped" } 
 const external = link.startsWith("http");
 ---
 
+
 <a
-  href={link}
+
   target={external ? "_blank" : undefined}
   rel={external ? "noreferrer" : undefined}
   class:list={[
