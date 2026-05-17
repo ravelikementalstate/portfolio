@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import FogMachine from "/src/assets/FogMachine.mp4";
 
 const recent = [
   { year: 2026, title: "Vesper Studio", kind: "Brand system" },
@@ -37,7 +38,7 @@ const recent = [
     
     <video class="w-full h-full" width="720" height="540" autoplay="" loop="" muted="" playsinline="">
       <!-- <source src="/letter/assets/global/hero.webm" type="video/webm"> -->
-      <source src="https://www.pexels.com/download/video/36703282/" type="video/mp4">
+      <source src={FogMachine} type="video/mp4">
     </video>
 	</div>
 

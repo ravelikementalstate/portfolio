@@ -7,19 +7,23 @@ import SpaceShipSystemsGame from "/src/assets/Space Ship Systems Game.png";
 import Beemo from "/src/assets/Beemo.png";
 import MagicWand from "/src/assets/MagicWand1.jpg";
 import LampAndRobot from "/src/assets/LampAndRobot.png";
+import FogMachine from "/src/assets/FogMachine.jpg";
+import Hebeklemme from "/src/assets/HebeklemmemitRand.png";
+import Rührwerk from "/src/assets/Rührwerk.png";
 import random_bild from "/src/assets/testbild.jpg";
 
 const projects: Project[] = [
+
 	{
-		year: 2025,
-		name: "Laser Tag Targets",
-		kind: "Self-initiated · Interactive Game System",
+		year: 2026,
+		name: "Cloudmaker",
+		kind: "Self-initiated · Interactive Prop",
 		description:
-			"A set of modular laser tag target units built from PVC pipe and translucent baking paper. Each module contains a calibrated photoresistor that detects incoming laser hits from custom-built blasters. The diffused surface ensures reliable detection across the entire target area. Powered by a rechargeable lithium battery via USB-C. Developed as part of an interactive laser tag system for a youth camp.",
-		stack: ["Electronics", "Arduino", "Photoresistor", "C++", "Upcycling", "Battery System"],
+			"A portable fog machine built using three piezoelectric mist modules to generate dense water vapor. The modules and battery system were integrated into a custom enclosure, creating a fictional weather experiment prototype used as part of an immersive youth camp storyline.",
+		stack: ["Electronics", "Piezo Mist Modules", "Battery System", "Prop Design"],
 		link: "#",
 		status: "completed",
-		image: LaserTargets
+		image: FogMachine
 	},
 	{
 		year: 2025,
@@ -53,6 +57,28 @@ const projects: Project[] = [
 		link: "#",
 		status: "completed",
 		image: Beemo
+	},
+	{
+		year: 2024,
+		name: "Brewing Stirrer",
+		kind: "Academic Project · Mechanical Design",
+		description:
+			"A stirring system designed for hobby beer brewing to prevent mash from burning during the brewing process. Developed around a geared motor and worm gear transmission to achieve low-speed, high-torque mixing. The project included research, mechanical concept development, and CAD construction of the full assembly.",
+		stack: ["CAD", "Mechanical Design", "Gear Design", "Engineering Calculations"],
+		link: "#",
+		status: "completed",
+		image: Rührwerk
+	},
+	{
+		year: 2024,
+		name: "Rotational Lifting Clamp",
+		kind: "Academic Project · Mechanical Design",
+		description:
+			"A custom lifting clamp concept developed for a university assignment in mechanical handling systems. Instead of conventional linkage mechanisms, the design translates linear lifting force into rotational clamping motion using an inclined-plane principle. The system was researched, calculated, prototyped, and fully designed in CAD, including force analysis and safety considerations.",
+		stack: ["CAD", "Mechanical Design", "Engineering Calculations", "Prototyping"],
+		link: "#",
+		status: "completed",
+		image: Hebeklemme
 	},
 	{
 		year: 2024,
@@ -101,7 +127,7 @@ const currently = [
 	<section class="container flex flex-col gap-10 mx-auto px-4 md:px-6 py-16 md:py-24 mb-10">
 		<h1
 			class="text-primary-800 text-3xl md:text-6xl font-semibold px-4">
-			Selected <span class="highlight">projects</span>.
+			Selected projects.
 		</h1>
 		<p
 			class="text-primary-800 text-2xl md:text-3xl font-semibold px-4 leading-[1.5]">

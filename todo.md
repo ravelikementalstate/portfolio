@@ -14,4 +14,4 @@
 - [ ] Disable links on project cards so they dont bring you to top of work page
 - [ ] Change home text gramma?
 - [ ] Add LinkedIn and 3D site profile to socials
-- [ ] 
+- [ ] Formular für Wunsch-Erfindung [Problemstellung aus dem Alltag; ] Düsentrieb Büro type
